@@ -382,7 +382,7 @@ Thus, \(||W||\) should be \(3\).
 Indeed, \(|W_2-\lambda I|=(\lambda-2)(\lambda-3)\) and \(\tilde\lambda=3\).
 \(W_3\) is the last example that is symmetric ; \(|W_3-\lambda I|=(\lambda-3)(\lambda-8)\) and \(\tilde\lambda=8\).
 
-\(W_4\) is not symmetric and we can't evaluate \(||W_4\) for now.
+\(W_4\) is not symmetric and we can't evaluate \(||W_4||\) for now.
 Still, we have, \(\lambda_1=-2\), \(\lambda_2=3\) and \(||W||\le3\).
 The reverse inequality is not valid since the eigenvectors \(x_1=[1\:\:-1]^T\) and \(x_2=[3\:\:2]^T\) are not perpendicular.
 \(W_5\) is not symmetric either, but we can postulate that \(||W_5||=1\) since
@@ -553,6 +553,17 @@ is Lipschitz constinuous and
 
 %%%
 \chapter{Lipschitz Constants of Neural Networks}
+
+Now we turn to the problem of the optimal Lischitz constant of various architectures which appear in machine learning and deep learning.
+In this chapter, we use the term "Lipschitz constant of a function" to stand for the optimal Lipschitz constant of a function.
+
+If \(f:\mathbb R^n\to\mathbb R^m\) is Lipschitz continuous almost everywhere, it is possible to express the Lipschitz constant of \(f\) in its exact form, by Rademacher Theorem.
+But, it is not always easy or feasible to find the exact value of Lipschitz constant whenever the function \(f\) is given.
+In fact, although the function is of simple form such as 2-layered MLP, the problem of evaluating the Lipschitz function is NP-hard.
+Instead of struggling to find analytic solutions, we present a systematic algorithm for each architectuare of neural network.
+
+%%
+\section{Rademacher Theorem}
 
 %%
 \section{Multi-Layer Perceptron}
