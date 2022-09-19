@@ -2,18 +2,18 @@
 \contentsline {chapter}{\numberline {2}Lipschitz Constants of Functions Between Euclidean Spaces}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Lipschitz Constants}{2}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Real-valued Functions of a Real Variable}{4}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Linear Functions}{5}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Operator Norms \(||W||\)}{5}{subsection.2.3.1}%
+\contentsline {section}{\numberline {2.3}Linear Functions}{6}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Operator Norms \(||W||\)}{6}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Evaluation of \(||W||\) for square matrices}{7}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Evaluation of \(||W||\) for rectangular matrices}{9}{subsection.2.3.3}%
 \contentsline {section}{\numberline {2.4}Affine Functions}{12}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Elementwise Application of Nonlinear Functions}{12}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Composites of Functions}{13}{section.2.6}%
 \contentsline {chapter}{\numberline {3}Lipschitz Constants of Neural Networks}{14}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Rademacher Theorem}{15}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Multi-Layer Perceptron}{15}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Dropout and Normalization}{15}{section.3.3}%
-\contentsline {section}{\numberline {3.4}CNN}{15}{section.3.4}%
-\contentsline {section}{\numberline {3.5}RNN}{15}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Conclusion}{16}{chapter.4}%
-\contentsline {chapter}{Bibliography}{17}{chapter.4}%
+\contentsline {section}{\numberline {3.1}Rademacher Theorem}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Multi-Layer Perceptron}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Dropout and Normalization}{14}{section.3.3}%
+\contentsline {section}{\numberline {3.4}CNN}{14}{section.3.4}%
+\contentsline {section}{\numberline {3.5}RNN}{14}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Conclusion}{15}{chapter.4}%
+\contentsline {chapter}{Bibliography}{16}{chapter.4}%

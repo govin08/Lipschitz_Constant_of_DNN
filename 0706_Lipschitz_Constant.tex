@@ -97,19 +97,19 @@ local Lipschitz constant에 대해 다룬 논문들도 있지만, 이 논문에�
 %%
 \section{Lipschitz Constants}
 % Definition : A Liptschitz constant (LC) and The optimal Lipschitz constant(OLC), extension to the metric space functions
-Let \(f:\mathbb R^n\to\mathbb R^m\) be a function.
+%Let \(f:\mathbb R^n\to\mathbb R^m\) be a function.
 For vectors \(\bx=[x_1\:\:\cdots\:\:x_n]^T\) and \(\by=[y_1\:\:\cdots\:\:y_m]^T\) in Euclidean spaces \(\mathbb R^n\) and \(\mathbb R^m\), respectively, \(||\bx||\) and \(||\by||\) are the usual standard norms of \bx{} and \by{} defined by
 \begin{equation}\label{eq:euclidean_norm}
 ||x||=\sqrt{{x_1}^2+\cdots+{x_n}^2},\quad ||y||=\sqrt{{y_1}^2+\cdots+{y_m}^2}.
 \end{equation}
 
 \begin{definition}\label{LC}
-A nonnegative real number \(C\) is called a Liptschitz constant of \(f\) if
+A function \(f:\mathbb R^n\to\mathbb R^m\) is called \emph{Lipschitz continuous} if there is a nonnegative real number \(c\) such that
 \begin{equation}\label{eq:LC1}
-||f(\bx)-f(\by)||\le C||\bx-\by||\qquad(\bx,\by\in\mathbb R^n)
+||f(\bx)-f(\by)||\le c||\bx-\by||\qquad(\bx,\by\in\mathbb R^n)
 \end{equation}
-The infimum of \(C\) which satisfies \eqref{eq:LC1} is called the optimal Lipschitz constant of \(f\) and is denoted by \(\lip(f)\).
-If \(\lip(f)\) exists as a nonnegative real number, \(f\) is called a Lipschitz continuous function.
+The infimum of \(c\) which satisfies \eqref{eq:LC1} is called the \emph{Lipschitz constant} of \(f\) and is denoted by \(\lip(f)\).
+%If \(\lip(f)\) exists as a nonnegative real number, \(f\) is called a Lipschitz continuous function.
 \end{definition}
 
 % The equality of inf-def and sup-def
@@ -121,35 +121,36 @@ It is useful to know that there is an equivalent definition ;
 To prove the equality, let
 \begin{equation}\label{eq:equivalent_def}
 \begin{aligned}
-L_1&=\inf\{C\ge0:||f(\bx)-f(\by)||\le C||\bx-\by||,\quad\bx,\by\in\mathbb R^n\}\\
+L_1&=\inf\{c\ge0:||f(\bx)-f(\by)||\le c||\bx-\by||,\quad\bx,\by\in\mathbb R^n\}\\
 L_2&=\sup\left\{\frac{||f(\bx)-f(\by)||}{||\bx-\by||}:\bx,\by\in\mathbb R^n,\bx\neq\by\right\}.
 \end{aligned}
 \end{equation}
 Let \(\mathcal L_1\) and \(\mathcal L_2\) be two the sets in the definition of \(L_1\) and \(L_2\), respectively.
 Then, \(\mathcal L_2\subset\mathcal L_1\) since
-\[\mathcal L_2=\{C\ge0:||f(\bx)-f(\by)||=C||\bx-\by||,\quad\bx,\by\in\mathbb R^n,\bx\neq\by\}.\]
-Pick \(C\in\mathcal L_2\).
-Then, \(C\in\mathcal L_1\) and it follows that \(L_1=\inf\mathcal L_1\le C\).
-Since \(C\in\mathcal L_2\) was arbitrary, we can take supremum for all \(C\in\mathcal L_2\) to conclude that \(L_1\le L_2\).
-Pick \(C\in\mathcal L_1\).
-Then, \(||f(\bx)-f(\by)||\le C||\bx-\by||\) for all \(\bx\) and \(\by\) in \(\mathbb R^n\).
+\[\mathcal L_2=\{c\ge0:||f(\bx)-f(\by)||=c||\bx-\by||,\quad\bx,\by\in\mathbb R^n,\bx\neq\by\},\]
+and it follows that \(L_1\le L_2\).
+%Pick \(c\in\mathcal L_2\).
+%Then, \(c\in\mathcal L_1\) and it follows that \(L_1=\inf\mathcal L_1\le c\).
+%Since \(c\in\mathcal L_2\) was arbitrary, we can take supremum for all \(c\in\mathcal L_2\) to conclude that \(L_1\le L_2\).
+Pick \(c\in\mathcal L_1\).
+Then, \(||f(\bx)-f(\by)||\le c||\bx-\by||\) for all \(\bx\) and \(\by\) in \(\mathbb R^n\).
 Assuming \(\bx\neq \by\), we have
 \[
-\frac{||f(\bx)-f(\by)||}{||\bx-\by||}\le C.
+\frac{||f(\bx)-f(\by)||}{||\bx-\by||}\le c.
 \]
-Taking supremum for all \bx{} and \by{} (\(\bx\neq\by\)), we have \(L_2\le C.\) and taking infimum for all \(C\le\mathcal L_1\) yields \(L_2\le L_1\).
+Taking supremum for all \bx{} and \by{} (\(\bx\neq\by\)), we have \(L_2\le c.\) and taking infimum for all \(c\le\mathcal L_1\) yields \(L_2\le L_1\).
 
 % inf = min
 The optimal Lipschitz constant \(\lip(f)\) is not only the infimum, but also the minimum of \(L\) satisfying \eqref{eq:LC1}.
-To show this, it suffices to show that \(\lip(f)\in\mathcal L_1\), or that \(C=\lip(f)\) satisfies the condition \eqref{eq:LC1}.
+To show this, it suffices to show that \(\lip(f)\in\mathcal L_1\), or that \(c=\lip(f)\) satisfies the condition.
 Let \(\bx,\:\by\in\mathbb R^n\).
 If \(\bx=\by\), then \eqref{eq:LC1} holds trivially.
 Assuming \(\bx\neq\by\), we have
 \[
 \frac{||f(\bx)-f(\by)||}{||\bx-\by||}\le\lip(f)
 \]
-because of the second definition of \(\lip(f)\).
-Multiplying both sides by \(||\bx-\by||\), we can conclude that \(C=\lip(f)\) satisfies the condition \eqref{eq:LC1}.
+because of the second definition \eqref{eq:LC2} of \(\lip(f)\).
+Multiplying both sides by \(||\bx-\by||\), we can conclude that \(c=\lip(f)\) satisfies the condition \eqref{eq:LC1}.
 % sup = max도 증명하면 좋겠는데, 어떻게 해야 할 지 모르겠다.
 % f가 linear map인 경우에는 conrad의 방법을 사용하면 된다.
 % conrad의 방법을 여기에 쓰자니, 가능은 할 것 같은데 말이 너무 길어지는 것 같다.
@@ -170,16 +171,19 @@ Thus, \(f(\bx)=f(\by)\) and \(f\) is a constant function.
 % differentiable (almost) everywhere → mean value theorem
 % sigmoid, hyperbolic tangent, ReLU
 
-For univariate real function \(f:\mathbb R\to\mathbb R\), the above condition \eqref{eq:LC1} is equivalent to saying that the average rate of change is upper bounded by \(C\);
+For univariate real function \(f:\mathbb R\to\mathbb R\), the above condition \eqref{eq:LC1} is equivalent to saying that the average rate of change is upper bounded by \(c\);
 \begin{equation}\label{eq:LC_average_rate_of_change}
-\left|\frac{f(x)-f(y)}{x-y}\right|\le C.
+\left|\frac{f(x)-f(y)}{x-y}\right|\le c.
 \end{equation}
 If \(f\) is diffrentiable everywhere in the domain, the mean value theorem guarantees that this is equivalent to 
-\begin{equation}\label{eq:LC_derivative}
-|f'(x)|\le C
+\begin{equation}\label{eq:LC_univariate1}
+|f'(x)|\le c
 \end{equation}
 for every \(x\in\mathbb R\).
-Moreover, \(\lip(f)\) is the least nonnegative number \(C\) satisfying the condition \eqref{eq:LC_derivative} for all \(x\).
+Moreover, \(\lip(f)\) is the least nonnegative number \(c\) satisfying the condition \eqref{eq:LC_univariate1} for all \(x\) and we can express \(\lip f\) in its exact form ; 
+\begin{equation}\label{eq:LC_univariate2}
+\lip (f) = \sup_{x\in\mathbb R}|f'(x)|
+\end{equation}
 
 In this sense, we can easily evaluate the optimal Lipschitz constant of the sigmoid function
 \begin{equation}\label{eq:sigmoid}
@@ -226,15 +230,16 @@ Rectified Linear Unit	&$\text{ReLU}(x)=\max\{0,x\}$			&1\\
 Leaky ReLU			&$\text{LReLU}(x)=\max\{\alpha x,x\}$	&1\\
 Exponential Linear Unit&$\text{ELU}(x)=
 \begin{cases}x&(x\ge0)\\\alpha(e^x-1)&(x<0)\end{cases}$	&1\\
-Gaussian			&$f(x)=e^{-x^2}$								&$\sqrt{\frac2e}$\\
+Softplus			&$f(x)=\frac1\beta\log(1+e^{\beta x})$	&$1$\\
+Gaussian			&$g(x)=e^{-x^2}$								&$\sqrt{\frac2e}$\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 In the definition of \(\lip(f)\) in \eqref{eq:LC2}, we can't replace the supremum by the maximum.
-Consider a function ; \(f(x)=\frac1{\ln(1+e^x)}\).
+Consider a function ; \(f(x)=\ln(1+e^x)\).
 This function is called the softplus activation function and is an antiderivative of the sigmoid function.
-Both of the function itself and the derivative of it are monotonically increasing, with an assymptote \(y=x\).
+It is a monotonically increasing function whose derivative is also increasing, with an assymptote \(y=x\).
 Thus, \(\lip(f)=1\), but no \(x\) and \(y\) satisfy the equality \(\frac{f(x)-f(y)}{x-y}=1\).
 
 %%
@@ -247,10 +252,10 @@ Thus, \(\lip(f)=1\), but no \(x\) and \(y\) satisfy the equality \(\frac{f(x)-f(
 Consider a linear function \(f(\bx)=W\bx\) for some \(m\times n\) matrix \(W\).
 Because of the linearity, the condition \eqref{eq:LC1} reduces to
 \begin{equation}\label{eq:linear_LC}
-||W\bx||\le c||x||.\qquad(\bx\in\mathbb R^n)
+||W\bx||\le c||\bx||.\qquad(\bx\in\mathbb R^n)
 \end{equation}
 
-The smallest \(C\) which satisfies \eqref{eq:linear_LC} is called \emph{the operator norm of \(W\)} and denoted by \(||W||\).
+The smallest \(c\) which satisfies \eqref{eq:linear_LC} is called \emph{the operator norm of \(W\)} and denoted by \(||W||\).
 Thus, the optimal Lipstchitz constant of \(f\) equals the operator norm of \(W\) ; \(||W||=\lip(f)\).
 The definitions of the forms \eqref{eq:equivalent_def} are as follows;
 \begin{equation}\label{eq:linear_equivalent_def}\begin{aligned}
@@ -279,9 +284,8 @@ Thus, the set \(\mathcal M_{m,n}(\mathbb R)\) of all \(m\) by \(n\) real matrice
 \end{enumerate}
 \end{proposition}
 For (a), that \(||W||\ge0\) is obvious.
-If \(||W||=0\), then \(W\bx=0\) for all \(\bx\in\mathbb R^n\).
-Taking \(\bx=e_i(1\le i\le n)\), the \(i\)-th columns of \(W\) are zero vectors.
-Therefore, \(W=0\).
+If \(||W||=0\), then \(||W\bx||\le 0||\bx||=0\) for all \(\bx\in\mathbb R^n\).
+It follows that \(W\bx=0\) for all \(\bx\in\mathbb R^n\), by the definition of vector norm, for which \(W=0\)
 Suppose, on the other hand, that \(W=0\). Then \(W\bx=0\) for all \(x\in\mathbb R^n\).
 Thus, \(c=0\) is the minimal value satisfying \eqref{eq:linear_LC}.
 To prove (b), we have
@@ -308,7 +312,7 @@ if \(W\in\mathcal M_{m,n}(\mathbb R)\) and \(V\in\mathcal M_{n,k}(\mathbb R)\), 
 \begin{equation}\label{eq:multiplicative_inequality}
 ||WV||\le||W||\:||V||.
 \end{equation}
-This is because of the equation
+This is because of the inequality
 \[||(WV)\bx||=||W(V\bx)||\le||W||\:||V\bx||\le||W|\:||V||\:||\bx||\]
 and the minimality of \(||WV||\).
 
@@ -316,13 +320,12 @@ and the minimality of \(||WV||\).
 \subsection{Evaluation of \(||W||\) for square matrices}
 
 First, consider the case when \(W\) is a square matrix so that \(f:\mathbb R^n\to\mathbb R^n\).
-Let \(\lambda_1\), \(\cdots\), \(\lambda_n\) be (possibly repeated) eigenvalues of \(W\).
- and let \(\tilde\lambda=\max\{|\lambda_i|\::\:i=1,\cdots,n\}\).
+Let \(\lambda_1\), \(\cdots\), \(\lambda_n\) be (possibly repeated) eigenvalues of \(W\) and let \(\tilde\lambda=\max\{|\lambda_i|\::\:i=1,\cdots,n\}\).
 Then, the following inequality holds in general ;
 \begin{equation}\label{eq:square_matrix_equation_1}
 \tilde\lambda\le||W||.
 \end{equation}
-For a proof, pick an eigenvalue \(\lambda_i\) and the corresponding eigenvector \(\bx_i\), which is nonzero.
+For a proof, pick an eigenvalue \(\lambda_i\) and the corresponding eigenvector \(\bx_i\) which is nonzero.
 Since \(W\bx_i=\lambda_i\bx_i\),
 Then, we have \(||W\bx_i||=|\lambda_i|\:||\bx_i||\) and
 \[|\lambda_i|=\frac{||W\bx_i||}{||\bx_i||}\le||W||.\]
@@ -378,12 +381,12 @@ W_5=\begin{bmatrix}
 \(W_1\) is the identity matrix and thus \(||W||=1\).
 Indeed, the characteristic polyinomial of \(W_1\) is \((\lambda-1)^2=0\), \(\lambda_1=\lambda_2=1\) and thus the maximum absolute value of them is \(1\).
 The matrix \(W_2\) stretches a given vector \(\bx\) twice in the x-axis direction and three times in the y-axis direction.
-Thus, \(||W||\) should be \(3\).
+Thus, \(||W_2||\) should be \(3\).
 Indeed, \(|W_2-\lambda I|=(\lambda-2)(\lambda-3)\) and \(\tilde\lambda=3\).
 \(W_3\) is the last example that is symmetric ; \(|W_3-\lambda I|=(\lambda-3)(\lambda-8)\) and \(\tilde\lambda=8\).
 
 \(W_4\) is not symmetric and we can't evaluate \(||W_4||\) for now.
-Still, we have, \(\lambda_1=-2\), \(\lambda_2=3\) and \(||W||\le3\).
+Still, we have, \(\lambda_1=-2\), \(\lambda_2=3\) and \(||W_4||\ge3\) by \eqref{eq:square_matrix_equation_1}.
 The reverse inequality is not valid since the eigenvectors \(x_1=[1\:\:-1]^T\) and \(x_2=[3\:\:2]^T\) are not perpendicular.
 \(W_5\) is not symmetric either, but we can postulate that \(||W_5||=1\) since
 \[
@@ -408,13 +411,13 @@ Since \(W_5\) has the only eigenvector \(0\), the inequality \eqref{eq:square_ma
 Here is a short description of what we've done in this subsection.
 \begin{lemma}\label{lemm:evaluation_of_operator_norm_for_square_matrix}
 Let \(W\in\mathcal M_n(\mathbb R)\) be a real symmetric matrix.
-Then, the operator norm \(||W||\) equals the maximum absolute value of eigenvalues of \(W\).
+Then, the operator norm \(||W||\) is the maximal absolute eigenvalue of \(W\).
 \end{lemma}
 
 %
 \subsection{Evaluation of \(||W||\) for rectangular matrices}
-Almost every matrix that we encounter in machine learning are not square matrices, nor are they symmetric matrices.
-But, we can always calculate the optimal Lipschitz constant or the operator norm of any rectangular matrices.
+Almost all matrices that we encounter in machine learning problem are neither square matrices, nor are they symmetric matrices.
+But, we can always calculate the Lipschitz constant or the operator norm of any rectangular matrices.
 Aside from the properties listed in the Proposition \ref{prop:operator_norm_1}, there is a useful criteria that help find the optimal Lipschitz constant of any rectangular matrix.
 
 \begin{theorem}\label{theo:evaluation_of_operator_norm_for_rectangular_matrix}
@@ -450,10 +453,11 @@ Then
 &=\langle W\bx,W\bx\rangle\\
 &=\langle W^TW\bx,\bx\rangle\\
 &\le||W^TW\bx||\:||\bx||\\
-&\le||W^TW||\:||x||^2,
+&\le||W^TW||\:||\bx||^2,
 \end{align*}
 and thus
-\[||W\bx||\le\sqrt{||W^TW||}\:||x||.\]
+\[||W\bx||\le\sqrt{||W^TW||}\:||\bx||.\]
+for all \(\bx\in\mathbb R^n\).
 By the minimality of \(||W||\), we have
 \[||W||\le\sqrt{||W^TW||}\]
 Squaring both sides and making use of \eqref{eq:multiplicative_inequality} yield
@@ -471,10 +475,11 @@ By \eqref{eq:norm_and_transpose}, the equation \eqref{eq:half_inequality_2} redu
 \[||W||^2=||W^TW||,\]
 and this proves \eqref{eq:evaluation_of_operator_norm_for_rectangular_matrix}.
 
-For example, we can evaluate the operator norm of \(W_5\) in the previous subsection.
-Since
-\[{W_5}^TW_5=\begin{bmatrix}0&0\\0&1\end{bmatrix},\]
-\({W_5}^TW_5\) has eigenvalues \(0\) and \(1\) ; \(||W_5||=\sqrt1=1\) as expected.
+For example, we can evaluate the operator norm of \(W_4\) and \(W_5\) in the previous subsection.
+We have
+\[{W_4}^TW_4=\begin{bmatrix}1&3\\2&0\end{bmatrix},\quad{W_5}^TW_5=\begin{bmatrix}0&0\\0&1\end{bmatrix}.\]
+\({W_4}^TW_4\) has its eigenvalues \(7\pm\sqrt{13}\), thus \(||W_4||=\sqrt{7+\sqrt{13}}\).
+And \({W_5}^TW_5\) has eigenvalues \(0\) and \(1\) ; \(||W_5||=\sqrt1=1\) as expected.
 As a rectangular matrix, we may think of
 \[W_6=\begin{bmatrix}1&0\\2&1\\0&1\end{bmatrix}.\]
 Since
@@ -493,11 +498,11 @@ has the same optimal Liptschitz constant as that of its linear part ;
 \end{equation}
 This is because the condition \eqref{eq:LC1} 
 \[
-||f(\bx)-f(\by)||\le C||\bx-\by||
+||f(\bx)-f(\by)||\le c||\bx-\by||
 \]
 applied to \eqref{eq:affine} becomes
 \[
-||W\bx-W\by||\le C||\bx-\by||.
+||W(\bx-\by)||\le c||\bx-\by||.
 \]
 
 %%
@@ -507,7 +512,7 @@ Let \(f:\mathbb R\to\mathbb R\) be any function and let \(F:\mathbb R^m\to\mathb
 F(\bx)=F\left(\begin{bmatrix}x_1\\\vdots\\x_m\end{bmatrix}\right)=
 \begin{bmatrix}f(x_1)\\\vdots\\f(x_m)\end{bmatrix}.
 \end{equation}
-Let \(f\) be a Liptschitz continuous function with its optimal constant \(L\).
+If \(f\) is a Liptschitz continuous function with its optimal constant \(L\).
 Then,
 \begin{align*}
 ||F(\bx)-F(\by)||^2
@@ -517,7 +522,7 @@ Then,
 \end{align*}
 for which
 \[||F(\bx)-F(\by)||\le L||\bx-\by||.\]
-Thus, \(L\) is a Liptschitz constant of \(F\) and the optimal Lipschitz constant of \(F\) is upper bounded by \(L\) ;
+Thus, \(\lip(F)\) is upper bounded by \(L=\lip(f)\) ;
 \begin{equation}\label{eq:elementwise_OLC}
 \lip(F)\le\lip(f).
 \end{equation}
@@ -530,6 +535,7 @@ Then, the composite function \(g\circ f\) is also Lipstchitz continuous and the 
 \lip(g\circ f)\le\lip(f)\lip(g)
 \end{equation}
 
+This is readily proved by the following reason.
 Let \(L\) and \(M\) be the optimal Lipschitz constants for \(f\) and \(g\) respectively.
 Then, for all \(\bx,\by\in\mathbb R^n\),
 \begin{align*}
@@ -540,8 +546,8 @@ Then, for all \(\bx,\by\in\mathbb R^n\),
 \end{align*}
 By the minimality of \(\lip(g\circ f)\), we have \eqref{eq:composite_1}.
 
-Note that \eqref{eq:composite_1} is a generalization of \eqref{eq:multiplicative_inequality}.
-The inequality can be strict.
+Note that \eqref{eq:multiplicative_inequality} is a specific case of \eqref{eq:composite_1}.
+Here, the inequality can be strict.
 As an example, \(||W_2||\:||W_4||=3\times\sqrt{7+\sqrt{13}}>\sqrt{1+\sqrt{37}}=||W_2W_4||\).
 Note also that \eqref{eq:composite_1} can be generalized further, to the case when the composition involoves several functions.
 That is, if \(f_i:\mathbb R^{n_{i-1}}\to\mathbb R^{n_i}\) are  functions between euclidean spaces, with its optimal Lipschitz constant \(L_i\), for \(i=1,2,\cdots,p\), the composite
@@ -554,10 +560,10 @@ is Lipschitz constinuous and
 %%%
 \chapter{Lipschitz Constants of Neural Networks}
 
-Now we turn to the problem of the optimal Lischitz constant of various architectures which appear in machine learning and deep learning.
-In this chapter, we use the term "Lipschitz constant of a function" to stand for the optimal Lipschitz constant of a function.
+Now we turn to the problem of finding the optimal Lischitz constant of various architectures frequently appearing in machine learning and deep learning.
+%In this chapter, we use the term "Lipschitz constant of a function" to stand for the optimal Lipschitz constant of a function.
 
-If \(f:\mathbb R^n\to\mathbb R^m\) is Lipschitz continuous almost everywhere, it is possible to express the Lipschitz constant of \(f\) in its exact form, by Rademacher Theorem.
+If \(f:\mathbb R^n\to\mathbb R^m\) is Lipschitz continuous almost everywhere, it is possible to express the Lipschitz constant of \(f\) in its exact form, as the Rademacher Theorem suggests.
 But, it is not always easy or feasible to find the exact value of Lipschitz constant whenever the function \(f\) is given.
 In fact, although the function is of simple form such as 2-layered MLP, the problem of evaluating the Lipschitz function is NP-hard.
 Instead of struggling to find analytic solutions, we present a systematic algorithm for each architectuare of neural network.
@@ -593,12 +599,22 @@ Instead of struggling to find analytic solutions, we present a systematic algori
 \bibitem {ACC} C. Adams, M. Chu, T. Crawford, S. Jensen, K. Siegel and L. Zhang,
     {\em Stick index of knots and links in the cubic lattice},
     J. Knot Theory Ramif. \textbf{21} (2012) 1250041.
-
-
+\bibitem {HF} Herbert Federer. {\em Geometric measure theory.}
+    Classics in Mathematics. Springer-Verlag Berlin Heidelberg, 1969.
+\bibitem {CS-WZ} Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan, Ian Goodfellow, and Rob Fergus. Intriguing properties of neural networks.
+In {\em Proceedings of the International Conference on Learning Representations (ICLR)}, 2014.
+\bibitem {MA-SC} Martín Arjovsky, Soumith Chintala, and Léon Bottou.
+Wasserstein generative adversarial networks.
+In {\em Proceedings of the 34th International Conference on Machine Learning, ICML,} pages 214–223, 2017.
+\bibitem {IG-YB} Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+{\em Deep Learning.}
+MIT Press, 2016.
+\bibitem {KS} Scaman, K. (2018, May 28). Lipschitz regularity of deep neural networks: analysis and. . . arXiv.org. Retrieved September 19, 2022, from https://arxiv.org/abs/1805.10965
+\bibitem {FC} Francis H. Clarke. {\em On the Inverse function Theorem}, Pacific Journal of Mathematics, Vol 64, No. 1.
+\bibitem {MJ-AD} Matt Jordan and Alexandros G. Dimakis {\em Exactly Computing the Local Lipschitz Constant of ReLUnetworks}
+\bibitem {BA-DS} Bhowmick, Aritra \& D’Souza, Meenakshi \& Raghavan, G.. (2021). LipBaB: Computing Exact Lipschitz Constant of ReLU Networks. 10.1007/978-3-030-86380-7\_13. 
 
 \end{thebibliography}
-
-
 
 %\addcontentsline{toc}{chapter}{Bibliography}
 %

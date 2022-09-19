@@ -1,0 +1,1 @@
+Bhowmick, Aritra & D’Souza, Meenakshi & Raghavan, G.. (2021). LipBaB: Computing Exact Lipschitz Constant of ReLU Networks. 10.1007/978-3-030-86380-7_13. 
