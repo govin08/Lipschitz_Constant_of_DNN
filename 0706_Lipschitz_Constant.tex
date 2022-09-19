@@ -564,34 +564,40 @@ Now we turn to the problem of finding the optimal Lischitz constant of various a
 %In this chapter, we use the term "Lipschitz constant of a function" to stand for the optimal Lipschitz constant of a function.
 
 For locally Lipschitz function, it is possible to express the Lipschitz constant of \(f\) in its exact form, as the Rademacher Theorem suggests.
-But, it is not always easy or feasible to find the exact value of Lipschitz constant whenever the function \(f\) is given.
-In fact, although the function is of simple form such as 2-layered MLP, the problem of evaluating the Lipschitz function is NP-hard.
+But, it is not always easy or feasible to find the true value of the Lipschitz constant whenever the function \(f\) is given.
+Indeed, even for simple algorithm such as two-layered MLP, it takes beyond polynomial time to evaluate the optimal constant.
 Instead of struggling to find analytic solutions, we present a systematic algorithm for each architectuare of neural network.
 
 %%
 \section{Rademacher Theorem}
 Here is a theorem that can be applied to all Lipschitz functions between euclidean spaces.
-The Lipschitz condition that we impose is not the global one \eqref{eq:LC1} ; it only need to be locally Lipschitz.
+The Lipschitz condition we impose is not the global one \eqref{eq:LC1} ; it only need to be locally Lipschitz in a sense that the bounding constant \(c\) exists for each \(\bx\).
 It has two conclusions : the differentiability (a.e.) and the formula for the optimal constant.
 
 \begin{theorem}\label{theo:Rademacher}
 Let \(f:\mathbb R^n\to\mathbb R^m\) be a locally Lipschitz function.
 Then,
 \(f\) is differentiable almost everywhere, and
-\end{theorem}
-\begin{equation}
+\begin{equation}\label{eq:Rademacher}
 \lip(f) = \sup_{\bx\in\mathbb R^n}||D_{\bx}(f)||
 \end{equation}
+\end{theorem}
 
-The first statement --- differentiability --- is usually refered to the main conclusion of this theorem.
+Here, \(D_{\bx}f\) is the Jacobian matrix of \(f\) or a matrix \(A\) satisfying
+\[\lim_{\by\to\bx}\frac{||f(\by)-f(\bx)-A(\by-\bx)||}{||\by-\bx||}=0.\]
+And \(||D_{\bx}(f)||\) is nothing but the operator norm we've defined in the previous chapter.
+
+The first statement of the theorem --- the differentiability --- is usually refered to the main conclusion of this theorem.
 But the proof of it is so lengthy that we omit the proof here.
-As for one-dimensional case, many of the textbooks of analysis including \cite{WR} covered this issue.
+As for one-dimensional case, many of the textbooks of measure theory including \cite{WR} covered this issue.
 In the process, concepts like absolute continuity, Radon-Nykodym theorem, total variation are involved.
+A proof for multi-dimensional case is found, for example, in \cite{VC}.
 
 The second statement, or the optimal Lipschitz constant is the one that we can use for our purpose.
-Note first that, \(D_{\bx}f\) is the Jacobian matrix of \(f\) or a matrix \(A\) satisfying
-\[\lim_{\by\to\bx}\frac{||f(\by)-f(\bx)-A(\by-\bx)||}{||\by-\bx||}=0,\]
-and that \(||D_{\bx}(f)||\) is nothing but the operator norm we've defined in the previous chapter.
+We think of the matrix whose entries are partial derivatives at point \(\bx\), compute the matrix norm and take the supremum over all \(\bx\in\mathbb R^n\).
+But, it doesn't mean that we can always find the accurate value \(\lip(f)\), given \(f\) and \(\bx\).
+To evaluate \(\lip(f)\), we should find the supremum, or the maximum if it exists.
+The theorem converts the problem of evaluating the constant to the problem of optimization problem.
 
 %Before going deeper, consider the case when \(m=n=1\).
 If \(f:\mathbb R\to\mathbb R\), then the previous condition becomes \eqref{eq:LC_univariate2}.
@@ -634,9 +640,11 @@ MIT Press, 2016.
 \bibitem {FC} Francis H. Clarke. {\em On the Inverse function Theorem}, Pacific Journal of Mathematics, Vol 64, No. 1.
 \bibitem {MJ-AD} Matt Jordan and Alexandros G. Dimakis {\em Exactly Computing the Local Lipschitz Constant of ReLUnetworks}
 \bibitem {BA-DS} Bhowmick, Aritra \& D’Souza, Meenakshi \& Raghavan, G.. (2021). LipBaB: Computing Exact Lipschitz Constant of ReLU Networks. 10.1007/978-3-030-86380-7\_13. 
+\bibitem {KC} Keith Conrad. {\em Computing the norm of a matrix}. \url{https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf}
 \bibitem {WR}  Rudin, Walter. {\em Real and Complex Analysis.} : McGraw-Hill Science/Engineering/Math, 1986.
 \bibitem {HF} Herbert Federer. {\em Geometric measure theory.}
     Classics in Mathematics. Springer-Verlag Berlin Heidelberg, 1969.
+\bibitem {VC} Villani, Cédric. {\em Optimal transport: old and new.} Vol. 338. Berlin: springer, 2009.
 
 
 \end{thebibliography}
@@ -652,3 +660,4 @@ MIT Press, 2016.
 
 \end{document}
 
+s
