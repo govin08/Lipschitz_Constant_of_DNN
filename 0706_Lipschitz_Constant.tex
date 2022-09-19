@@ -194,13 +194,13 @@ and the hyperbolic tangent function
 \tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}.
 \end{equation}
 Since \(0<\sigma(x)<1\) and \(\sigma'(x)=\sigma(x)\left(1-\sigma(x)\right)\), we have \(\sigma'(x)<\frac14\) so that
-\begin{equation}\label{eq:sigmoid_OLC}
+\begin{equation}\label{eq:sigmoid_LC}
 \lip(\sigma)=\frac14.
 \end{equation}
 Since \(\tanh(x)=2\sigma(2x)-1\), we have
 \[\tanh'(x)=4\sigma'(2x)<1\]
 and
-\begin{equation}\label{eq:tanh_OLC}
+\begin{equation}\label{eq:tanh_LC}
 \lip(\tanh)=1.
 \end{equation}
 
@@ -209,7 +209,7 @@ The \text{ReLU} function
 \text{ReLU}(x)=\max\{0,x\}
 \end{equation}
  is not differentiable everywhere, but we can use \eqref{eq:LC_average_rate_of_change} to conclude
-\begin{equation}\label{eq:ReLU_OLC}
+\begin{equation}\label{eq:ReLU_LC}
 \lip(\text{ReLU})=1.
 \end{equation}
 %Although not being differentiable, the case of rectified linear unit \(\text{ReLu}(x)=\max\{0,x\}\) can also be easily evaluated to be \(1\).
@@ -406,10 +406,10 @@ and
 \[
 \frac{||W_5\bx||}{||\bx||}=\frac{|x_2|}{\sqrt{{x_1}^2+{x_2}^2}}\le 1.
 \]
-Since \(W_5\) has the only eigenvector \(0\), the inequality \eqref{eq:square_matrix_equation_1} still holds.
+Since \(W_5\) has the only eigenvector \(0\), the inequality \eqref{eq:square_matrix_inequality_1} still holds.
 
 Here is a short description of what we've done in this subsection.
-\begin{lemma}\label{lemm:evaluation_of_operator_norm_for_square_matrix}
+\begin{lemma}\label{lemm:evaluation_for_square_matrices}
 Let \(W\in\mathcal M_n(\mathbb R)\) be a real symmetric matrix.
 Then, the operator norm \(||W||\) is the maximal absolute eigenvalue of \(W\).
 \end{lemma}
@@ -420,7 +420,7 @@ Almost all matrices that we encounter in machine learning problem are neither sq
 But, we can always calculate the Lipschitz constant or the operator norm of any rectangular matrices.
 Aside from the properties listed in the Proposition \ref{prop:operator_norm_1}, there is a useful criteria that help find the optimal Lipschitz constant of any rectangular matrix.
 
-\begin{theorem}\label{theo:evaluation_of_operator_norm_for_rectangular_matrix}
+\begin{theorem}\label{theo:evaluation_for_rectangular_matrices}
 Let \(W\in\mathcal M_{m,n}(\mathbb R)\) be an \(m\) by \(n\) real matrix.
 Then
 \begin{equation}\label{eq:evaluation_of_operator_norm_for_rectangular_matrix}
@@ -429,7 +429,7 @@ Then
 \end{theorem}
 
 Note that the norm on the left hand side is the operator norm on \(\mathcal M_{m,n}(\mathbb R)\) and the norm on the right hands side is the operator norm on \(\mathcal M_n(\mathbb R)\).
-Note also that the matrix \(W^TW\) is symmetric in that \((W^TW)^T=W^T(W^T)^T=W^TW\) and we are always able to calculate the norm of \(||W^TW||\) by making use of the lemma \ref{lemm:evaluation_of_operator_norm_for_square_matrix}.
+Note also that the matrix \(W^TW\) is symmetric in that \((W^TW)^T=W^T(W^T)^T=W^TW\) and we are always able to calculate the norm of \(||W^TW||\) by making use of the lemma \ref{lemm:evaluation_for_square_matrices}.
 
 Before the proof of \eqref{eq:evaluation_of_operator_norm_for_rectangular_matrix}, we illustrate elementary properties of the operator norm of matrices.
 The euclidean norm \(||\bx||\) of a vector \(\bx\in\mathbb R^n\) in \eqref{eq:euclidean_norm} can also be defined by means of the inner product on \(\mathbb R^n\);
@@ -461,7 +461,7 @@ for all \(\bx\in\mathbb R^n\).
 By the minimality of \(||W||\), we have
 \[||W||\le\sqrt{||W^TW||}\]
 Squaring both sides and making use of \eqref{eq:multiplicative_inequality} yield
-\begin{equation}\label{eq:half_inequality_2}
+\begin{equation}\label{eq:half_inequality}
 ||W||^2=||W^TW||\le||W^T||\:||W||.
 \end{equation}
 Since \(||W||\neq0\), we have
@@ -471,7 +471,7 @@ Therefore,
 \begin{equation}\label{eq:norm_and_transpose}
 ||W||=||W^T||.
 \end{equation}
-By \eqref{eq:norm_and_transpose}, the equation \eqref{eq:half_inequality_2} reduces to
+By \eqref{eq:norm_and_transpose}, the equation \eqref{eq:half_inequality} reduces to
 \[||W||^2=||W^TW||,\]
 and this proves \eqref{eq:evaluation_of_operator_norm_for_rectangular_matrix}.
 
@@ -493,7 +493,7 @@ An affine function
 f(\bx)=W\bx+\bb
 \end{equation}
 has the same optimal Liptschitz constant as that of its linear part ; 
-\begin{equation}\label{eq:affine_OLC}
+\begin{equation}\label{eq:affine_LC}
 \lip(f)=||W||
 \end{equation}
 This is because the condition \eqref{eq:LC1} 
@@ -523,7 +523,7 @@ Then,
 for which
 \[||F(\bx)-F(\by)||\le L||\bx-\by||.\]
 Thus, \(\lip(F)\) is upper bounded by \(L=\lip(f)\) ;
-\begin{equation}\label{eq:elementwise_OLC}
+\begin{equation}\label{eq:elementwise_LC}
 \lip(F)\le\lip(f).
 \end{equation}
 
@@ -563,13 +563,39 @@ is Lipschitz constinuous and
 Now we turn to the problem of finding the optimal Lischitz constant of various architectures frequently appearing in machine learning and deep learning.
 %In this chapter, we use the term "Lipschitz constant of a function" to stand for the optimal Lipschitz constant of a function.
 
-If \(f:\mathbb R^n\to\mathbb R^m\) is Lipschitz continuous almost everywhere, it is possible to express the Lipschitz constant of \(f\) in its exact form, as the Rademacher Theorem suggests.
+For locally Lipschitz function, it is possible to express the Lipschitz constant of \(f\) in its exact form, as the Rademacher Theorem suggests.
 But, it is not always easy or feasible to find the exact value of Lipschitz constant whenever the function \(f\) is given.
 In fact, although the function is of simple form such as 2-layered MLP, the problem of evaluating the Lipschitz function is NP-hard.
 Instead of struggling to find analytic solutions, we present a systematic algorithm for each architectuare of neural network.
 
 %%
 \section{Rademacher Theorem}
+Here is a theorem that can be applied to all Lipschitz functions between euclidean spaces.
+The Lipschitz condition that we impose is not the global one \eqref{eq:LC1} ; it only need to be locally Lipschitz.
+It has two conclusions : the differentiability (a.e.) and the formula for the optimal constant.
+
+\begin{theorem}\label{theo:Rademacher}
+Let \(f:\mathbb R^n\to\mathbb R^m\) be a locally Lipschitz function.
+Then,
+\(f\) is differentiable almost everywhere, and
+\end{theorem}
+\begin{equation}
+\lip(f) = \sup_{\bx\in\mathbb R^n}||D_{\bx}(f)||
+\end{equation}
+
+The first statement --- differentiability --- is usually refered to the main conclusion of this theorem.
+But the proof of it is so lengthy that we omit the proof here.
+As for one-dimensional case, many of the textbooks of analysis including \cite{WR} covered this issue.
+In the process, concepts like absolute continuity, Radon-Nykodym theorem, total variation are involved.
+
+The second statement, or the optimal Lipschitz constant is the one that we can use for our purpose.
+Note first that, \(D_{\bx}f\) is the Jacobian matrix of \(f\) or a matrix \(A\) satisfying
+\[\lim_{\by\to\bx}\frac{||f(\by)-f(\bx)-A(\by-\bx)||}{||\by-\bx||}=0,\]
+and that \(||D_{\bx}(f)||\) is nothing but the operator norm we've defined in the previous chapter.
+
+%Before going deeper, consider the case when \(m=n=1\).
+If \(f:\mathbb R\to\mathbb R\), then the previous condition becomes \eqref{eq:LC_univariate2}.
+If \(f:\mathbb R^n\to\mathbb R\),
 
 %%
 \section{Multi-Layer Perceptron}
@@ -596,11 +622,7 @@ Instead of struggling to find analytic solutions, we present a systematic algori
 
 \addcontentsline{toc}{chapter}{Bibliography}
 \begin{thebibliography}{AA}
-\bibitem {ACC} C. Adams, M. Chu, T. Crawford, S. Jensen, K. Siegel and L. Zhang,
-    {\em Stick index of knots and links in the cubic lattice},
-    J. Knot Theory Ramif. \textbf{21} (2012) 1250041.
-\bibitem {HF} Herbert Federer. {\em Geometric measure theory.}
-    Classics in Mathematics. Springer-Verlag Berlin Heidelberg, 1969.
+\bibitem {KS} Scaman, K. (2018, May 28). Lipschitz regularity of deep neural networks: analysis and. . . arXiv.org. Retrieved September 19, 2022, from https://arxiv.org/abs/1805.10965
 \bibitem {CS-WZ} Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan, Ian Goodfellow, and Rob Fergus. Intriguing properties of neural networks.
 In {\em Proceedings of the International Conference on Learning Representations (ICLR)}, 2014.
 \bibitem {MA-SC} Martín Arjovsky, Soumith Chintala, and Léon Bottou.
@@ -609,10 +631,13 @@ In {\em Proceedings of the 34th International Conference on Machine Learning, IC
 \bibitem {IG-YB} Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
 {\em Deep Learning.}
 MIT Press, 2016.
-\bibitem {KS} Scaman, K. (2018, May 28). Lipschitz regularity of deep neural networks: analysis and. . . arXiv.org. Retrieved September 19, 2022, from https://arxiv.org/abs/1805.10965
 \bibitem {FC} Francis H. Clarke. {\em On the Inverse function Theorem}, Pacific Journal of Mathematics, Vol 64, No. 1.
 \bibitem {MJ-AD} Matt Jordan and Alexandros G. Dimakis {\em Exactly Computing the Local Lipschitz Constant of ReLUnetworks}
 \bibitem {BA-DS} Bhowmick, Aritra \& D’Souza, Meenakshi \& Raghavan, G.. (2021). LipBaB: Computing Exact Lipschitz Constant of ReLU Networks. 10.1007/978-3-030-86380-7\_13. 
+\bibitem {WR}  Rudin, Walter. {\em Real and Complex Analysis.} : McGraw-Hill Science/Engineering/Math, 1986.
+\bibitem {HF} Herbert Federer. {\em Geometric measure theory.}
+    Classics in Mathematics. Springer-Verlag Berlin Heidelberg, 1969.
+
 
 \end{thebibliography}
 
