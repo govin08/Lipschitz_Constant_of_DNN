@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.7)  20 SEP 2022 08:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.7)  20 SEP 2022 14:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -611,12 +611,12 @@ LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
 
 [2
 
-] [3] [4] [5] [6] [7] [8]
+] [3] [4] [5] [6] [7]
 
-LaTeX Warning: Reference `eq:square_matrix_inequality_1' on page 9 undefined on
- input line 409.
+LaTeX Warning: Reference `eq:square_matrix_equation_1' on page 8 undefined on i
+nput line 333.
 
-[9] [10] [11]
+[8] [9] [10] [11]
 Overfull \hbox (5.42062pt too wide) in paragraph at lines 509--509
 []\T1/cmr/bx/n/17.28 Elementwise Ap-pli-ca-tion of Non-lin-ear Func-
  []
@@ -652,7 +652,7 @@ Package rerunfilecheck Info: File `0706_Lipschitz_Constant.out' has not changed
  ) 
 Here is how much of TeX's memory you used:
  11953 strings out of 478353
- 183610 string characters out of 5852101
+ 183608 string characters out of 5852101
  483755 words of memory out of 5000000
  29723 multiletter control sequences out of 15000+600000
  436922 words of font info for 131 fonts, out of 8000000 for 9000
@@ -707,7 +707,7 @@ s/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sfbx2488.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti12
 00.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on 0706_Lipschitz_Constant.pdf (21 pages, 1687999 bytes).
+Output written on 0706_Lipschitz_Constant.pdf (21 pages, 1687993 bytes).
 PDF statistics:
  556 PDF objects out of 1000 (max. 8388607)
  422 compressed objects within 5 object streams

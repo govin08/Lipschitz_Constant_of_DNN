@@ -322,7 +322,7 @@ and the minimality of \(||WV||\).
 First, consider the case when \(W\) is a square matrix so that \(f:\mathbb R^n\to\mathbb R^n\).
 Let \(\lambda_1\), \(\cdots\), \(\lambda_n\) be (possibly repeated) eigenvalues of \(W\) and let \(\tilde\lambda=\max\{|\lambda_i|\::\:i=1,\cdots,n\}\).
 Then, the following inequality holds in general ;
-\begin{equation}\label{eq:square_matrix_equation_1}
+\begin{equation}\label{eq:square_matrix_inequality}
 \tilde\lambda\le||W||.
 \end{equation}
 For a proof, pick an eigenvalue \(\lambda_i\) and the corresponding eigenvector \(\bx_i\) which is nonzero.
@@ -386,7 +386,7 @@ Indeed, \(|W_2-\lambda I|=(\lambda-2)(\lambda-3)\) and \(\tilde\lambda=3\).
 \(W_3\) is the last example that is symmetric ; \(|W_3-\lambda I|=(\lambda-3)(\lambda-8)\) and \(\tilde\lambda=8\).
 
 \(W_4\) is not symmetric and we can't evaluate \(||W_4||\) for now.
-Still, we have, \(\lambda_1=-2\), \(\lambda_2=3\) and \(||W_4||\ge3\) by \eqref{eq:square_matrix_equation_1}.
+Still, we have, \(\lambda_1=-2\), \(\lambda_2=3\) and \(||W_4||\ge3\) by \eqref{eq:square_matrix_inequality}.
 The reverse inequality is not valid since the eigenvectors \(x_1=[1\:\:-1]^T\) and \(x_2=[3\:\:2]^T\) are not perpendicular.
 \(W_5\) is not symmetric either, but we can postulate that \(||W_5||=1\) since
 \[
@@ -406,7 +406,7 @@ and
 \[
 \frac{||W_5\bx||}{||\bx||}=\frac{|x_2|}{\sqrt{{x_1}^2+{x_2}^2}}\le 1.
 \]
-Since \(W_5\) has the only eigenvector \(0\), the inequality \eqref{eq:square_matrix_inequality_1} still holds.
+Since \(W_5\) has the only eigenvector \(0\), the inequality \eqref{eq:square_matrix_inequality} still holds.
 
 Here is a short description of what we've done in this subsection.
 \begin{lemma}\label{lemm:evaluation_for_square_matrices}
@@ -560,7 +560,7 @@ is Lipschitz constinuous and
 %%%
 \chapter{Lipschitz Constants of Neural Networks}
 
-Now we turn to the problem of finding the optimal Lischitz constant of various architectures frequently appearing in machine learning and deep learning.
+Now, we turn to the problem of finding the optimal Lischitz constant of various architectures frequently appearing in machine learning and deep learning.
 %In this chapter, we use the term "Lipschitz constant of a function" to stand for the optimal Lipschitz constant of a function.
 
 For locally Lipschitz function, it is possible to express the Lipschitz constant of \(f\) in its exact form, as the Rademacher Theorem suggests.
