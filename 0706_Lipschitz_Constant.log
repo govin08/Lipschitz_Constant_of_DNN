@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.22)  11 OCT 2022 07:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.22)  11 OCT 2022 08:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -468,7 +468,7 @@ File: l3backend-pdftex.def 2021-12-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count297
 \l__pdf_internal_box=\box60
 )
-No file 0706_Lipschitz_Constant.aux.
+(./0706_Lipschitz_Constant.aux)
 \openout1 = `0706_Lipschitz_Constant.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
@@ -492,6 +492,7 @@ LaTeX Font Info:    ... okay on input line 51.
 LaTeX Font Info:    Checking defaults for LUC/nanummj/m/n on input line 51.
 LaTeX Font Info:    Trying to load font information for LUC+nanummj on input li
 ne 51.
+
 (c:/texlive/2021/texmf-dist/tex/latex/nanumtype1/lucnanummj.fd
 File: lucnanummj.fd 2013/02/12 v0.1 Nanum Myeongjo font definitions
 )
@@ -535,6 +536,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 51.
 LaTeX Info: Redefining \pageref on input line 51.
 LaTeX Info: Redefining \nameref on input line 51.
+
+(./0706_Lipschitz_Constant.out) (./0706_Lipschitz_Constant.out)
 \@outlinefile=\write3
 \openout3 = `0706_Lipschitz_Constant.out'.
 
@@ -569,7 +572,8 @@ LaTeX Font Info:    Trying to load font information for U+esint on input line 5
 File: uesint.fd 
 ) [1
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./0706_Lipschi
+tz_Constant.toc)
 \tf@toc=\write4
 \openout4 = `0706_Lipschitz_Constant.toc'.
 
@@ -605,158 +609,20 @@ LaTeX Font Warning: Font shape `U/wasy/b/n' in size <8> not available
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
 (Font)              Font shape `U/wasy/m/n' tried instead on input line 101.
 
-
-LaTeX Warning: Reference `eq:LC1' on page 2 undefined on input line 111.
-
 [2
 
-]
-
-LaTeX Warning: Reference `eq:LC1' on page 3 undefined on input line 144.
-
-
-LaTeX Warning: Reference `eq:LC1' on page 3 undefined on input line 147.
-
-
-LaTeX Warning: Reference `eq:LC2' on page 3 undefined on input line 152.
-
-
-LaTeX Warning: Reference `eq:LC1' on page 3 undefined on input line 153.
-
-
-LaTeX Warning: Reference `eq:LC1' on page 3 undefined on input line 161.
-
-
-LaTeX Warning: Reference `eq:LC1' on page 3 undefined on input line 174.
-
-[3]
-
-LaTeX Warning: Reference `eq:LC_univariate1' on page 4 undefined on input line 
-183.
-
-[4]
-
-LaTeX Warning: Reference `eq:LC_average_rate_of_change' on page 5 undefined on 
-input line 211.
-
-
-LaTeX Warning: Reference `eq:LC2' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Reference `eq:LC1' on page 5 undefined on input line 253.
-
-[5]
-
-LaTeX Warning: Reference `eq:linear_LC' on page 6 undefined on input line 258.
-
-
-LaTeX Warning: Reference `eq:equivalent_def' on page 6 undefined on input line 
-260.
-
-
-LaTeX Warning: Reference `eq:linear_equivalent_def' on page 6 undefined on inpu
-t line 266.
-
-
-LaTeX Warning: Reference `eq:linear_equivalent_def_2' on page 6 undefined on in
-put line 271.
-
-
-LaTeX Warning: Reference `eq:linear_LC' on page 6 undefined on input line 290.
-
-[6]
-
-LaTeX Warning: Reference `eq:square_matrix_equation_1' on page 7 undefined on i
-nput line 333.
-
-[7] [8]
-
-LaTeX Warning: Reference `eq:square_matrix_equation_1' on page 9 undefined on i
-nput line 389.
-
+] [3] [4] [5] [6] [7] [8]
 
 LaTeX Warning: Reference `eq:square_matrix_inequality_1' on page 9 undefined on
  input line 409.
 
-
-LaTeX Warning: Reference `prop:operator_norm_1' on page 9 undefined on input li
-ne 421.
-
-[9]
-
-LaTeX Warning: Reference `lemm:evaluation_for_square_matrices' on page 10 undef
-ined on input line 432.
-
-
-LaTeX Warning: Reference `eq:evaluation_of_operator_norm_for_rectangular_matrix
-' on page 10 undefined on input line 434.
-
-
-LaTeX Warning: Reference `eq:euclidean_norm' on page 10 undefined on input line
- 435.
-
-
-LaTeX Warning: Reference `eq:evaluation_of_operator_norm_for_rectangular_matrix
-' on page 10 undefined on input line 446.
-
-
-LaTeX Warning: Reference `eq:evaluation_of_operator_norm_for_rectangular_matrix
-' on page 10 undefined on input line 447.
-
-
-LaTeX Warning: Reference `eq:multiplicative_inequality' on page 10 undefined on
- input line 463.
-
-[10]
-
-LaTeX Warning: Reference `eq:norm_and_transpose' on page 11 undefined on input 
-line 474.
-
-
-LaTeX Warning: Reference `eq:half_inequality' on page 11 undefined on input lin
-e 474.
-
-
-LaTeX Warning: Reference `eq:evaluation_of_operator_norm_for_rectangular_matrix
-' on page 11 undefined on input line 476.
-
-[11]
-
-LaTeX Warning: Reference `eq:LC1' on page 12 undefined on input line 499.
-
-
-LaTeX Warning: Reference `eq:affine' on page 12 undefined on input line 503.
-
-
+[9] [10] [11]
 Overfull \hbox (5.42062pt too wide) in paragraph at lines 509--509
 []\T1/cmr/bx/n/17.28 Elementwise Ap-pli-ca-tion of Non-lin-ear Func-
  []
 
-[12]
-
-LaTeX Warning: Reference `eq:composite_1' on page 13 undefined on input line 54
-7.
-
-
-LaTeX Warning: Reference `eq:multiplicative_inequality' on page 13 undefined on
- input line 549.
-
-
-LaTeX Warning: Reference `eq:composite_1' on page 13 undefined on input line 54
-9.
-
-
-LaTeX Warning: Reference `eq:composite_1' on page 13 undefined on input line 55
-2.
-
-[13]
+[12] [13]
 Chapter 3.
-
-LaTeX Warning: Reference `eq:LC1' on page 14 undefined on input line 574.
-
-
-Package natbib Warning: Citation `WR' on page 14 undefined on input line 588.
-
 [14
 
 ]
@@ -764,7 +630,7 @@ Overfull \hbox (6.91656pt too wide) in paragraph at lines 597--597
 []\T1/cmr/bx/n/17.28 AutoLip : Up-per-bound-ing the Lip-s-chitz con-
  []
 
-<computation_graph.png, id=177, 405.6756pt x 110.814pt>
+<computation_graph.png, id=272, 405.6756pt x 110.814pt>
 File: computation_graph.png Graphic file (type png)
 <use computation_graph.png>
 Package pdftex.def Info: computation_graph.png  used on input line 605.
@@ -779,22 +645,11 @@ Underfull \hbox (badness 1331) in paragraph at lines 637--638
 \T1/cmr/m/n/12 : McGraw-Hill Sci-
  []
 
-
-Package natbib Warning: There were undefined citations.
-
 [18
 
-] (./0706_Lipschitz_Constant.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+] (./0706_Lipschitz_Constant.aux)
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package rerunfilecheck Warning: File `0706_Lipschitz_Constant.out' has changed.
@@ -803,17 +658,17 @@ Package rerunfilecheck Warning: File `0706_Lipschitz_Constant.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `0706_Lipschitz_Constant.out':
-(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             Before: 5DA77ED7BCC4647FCFD311E0AEF4F94F;2728
 (rerunfilecheck)             After:  717FB599683F52E9CF1ACF2384CC6643;2738.
  ) 
 Here is how much of TeX's memory you used:
- 11905 strings out of 478353
- 182687 string characters out of 5852100
- 480342 words of memory out of 5000000
- 29691 multiletter control sequences out of 15000+600000
+ 11927 strings out of 478353
+ 183074 string characters out of 5852100
+ 483679 words of memory out of 5000000
+ 29705 multiletter control sequences out of 15000+600000
  435236 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,17n,76p,316b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,17n,76p,441b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
@@ -863,10 +718,10 @@ s/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sfbx2488.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti12
 00.pfb>
-Output written on 0706_Lipschitz_Constant.pdf (21 pages, 1667269 bytes).
+Output written on 0706_Lipschitz_Constant.pdf (21 pages, 1675834 bytes).
 PDF statistics:
- 445 PDF objects out of 1000 (max. 8388607)
- 312 compressed objects within 4 object streams
+ 539 PDF objects out of 1000 (max. 8388607)
+ 405 compressed objects within 5 object streams
  85 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 
