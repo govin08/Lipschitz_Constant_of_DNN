@@ -47,6 +47,8 @@
 \newcommand\bb{\ensuremath{\boldsymbol b}}
 \newcommand\bv{\ensuremath{\boldsymbol v}}
 \newcommand\lip{\ensuremath{\text{Lip}}}
+\newcommand\pa[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand\norm[1]{\ensuremath{\left|\left|#1\right|\right|}}
 
 \begin{document}
 \title{\textbf{Lipschitz Constants of Functions of Neural Networks}}
@@ -594,25 +596,54 @@ In order to construct a systematic way to estimate the constant and to make use 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{computation_graph}
-\caption{A computational graph for the function \(f_\omega(x)=\frac1{1+e^{-x}}+\left|2x+\omega\cos x\right|.\)}
+\caption{A computational graph for the function \(f_\omega(x)=\frac1{1+e^{-2x}}+\left|2x+\omega\cos x\right|.\)}
 \label{computational_graph}
 \end{figure}
 
+We can bound the Lipschitz constant of \(f_\omega\) from above, by upperbounding the partial derivatives of \(\theta_1\), \(\theta_2\), \(\cdots\), \(\theta_7\) consecutively where \(\theta_7=f_\omega(x)\).
 %The derivative of \(f_\omega\), and the Lipschitz constant of it can be evaluated consecutively as follows.
-Since, \(\theta_i\) is a function of \(\theta_0\), \(\theta_1\), \(\theta_2\), \(\cdots\), \(\theta_{i-1}\), the partial derivative \(\frac{\partial\theta_i}{\partial x}\) can be evaluated inductively as follows.
+%Since, \(\theta_i\) is a function of \(\theta_0\), \(\theta_1\), \(\theta_2\), \(\cdots\), \(\theta_{i-1}\), the partial derivative \$(\frac{\partial\theta_i}{\partial x}\) can be evaluated inductively as follows.
+Since \(\theta_1=g_1(\theta_0)=\omega\), we have \(\frac{\partial\theta_1}{\partial x}=0\).
+The next parameter \(\theta_2\) is a function of two variables ; \(\theta_2=g_2(\theta_0,\theta_1)=\cos\theta_0\).
+It is legal to apply the chain rule to get
+\[\pa{\theta_2}x=\pa{\theta_2}{\theta_0}\pa{\theta_0}x+\pa{\theta_2}{\theta_1}\pa{\theta_1}x=-\sin x\]
+Then, the \emph{operator norm} or the Lipschitz constant \norm{\pa{\theta_2}x} of \(\theta_2\) is
+\[\norm{\pa{\theta_2}x}=\sup_x(-\sin x)=1.\]
+Again, since \(\theta_3=g_3(\theta_0,\theta_1,\theta_2)=2\theta_0\), we have
+\[\pa{\theta_3}x=\pa{\theta_3}{\theta_0}\pa{\theta_0}x+\pa{\theta_3}{\theta_1}\pa{\theta_1}x+\pa{\theta_3}{\theta_2}\pa{\theta_2}x=2,\]
+and thus \(\norm{\pa{\theta_2}x}=2\).
+Note that the value of partial derivatives evaluated above, such as \pa{\theta_1}x and \pa{\theta_2}x, can be applied to calcuate \pa{\theta_2}x.
+To represent that \norm{\pa{\theta_2}x} is upper bounded by 2, we write \(L_3=2\).
+Likewise, let \(L_1=0\) and \(L_2=1\).
 
+For the next parameter \(\theta_4=g_4(\theta_0,\theta_1,\theta_2,\theta_3)=\theta_3+\theta_1\theta_2\), we have
 \begin{align*}
-\frac{\partial\theta_1}{\partial x}&=0\\
-\frac{\partial\theta_2}{\partial x}&
-=\frac{\partial\theta_2}{\partial\theta_0}\frac{\partial\theta_0}{\partial x}
-+\frac{\partial\theta_2}{\partial\theta_1}\frac{\partial\theta_1}{\partial x}
-=\\
-\frac{\partial\theta_3}{\partial x}&=\\
-\frac{\partial\theta_4}{\partial x}&=\\
-\frac{\partial\theta_5}{\partial x}&=\\
-\frac{\partial\theta_6}{\partial x}&=\\
-\frac{\partial\theta_7}{\partial x}&=
+\pa{\theta_4}x
+&=\pa{\theta_4}{\theta_0}\pa{\theta_0}x+\pa{\theta_4}{\theta_1}\pa{\theta_1}x+\pa{\theta_4}{\theta_2}\pa{\theta_2}x
++\pa{\theta_4}{\theta_3}\pa{\theta_3}x\\
+&=0\times1+\theta_2\times0+\theta_1\times(-\sin x)+1\times2\\
 \end{align*}
+and
+\begin{align*}
+\norm{\pa{\theta_4}x}
+&\le|\omega|\cdot\norm{\pa{\theta_2}x}+1\times\norm{\pa{\theta_3}x}\\
+&\le|\omega|\cdot L_2+L_3=|\omega|+2.
+\end{align*}
+Thus, \(L_4=|\omega|+2\).
+(Here, tighter bound \(|\omega|\) is possible in this case, but we are proposing a genenral upper bound in this section.)
+
+In similar fashions,
+\(\theta_5=g_5(\theta_0,\theta_1,\cdots,\theta_4)=\frac1{1+e^{-\theta_3}}\),
+\(\theta_6=g_6(\theta_0,\theta_1,\cdots,\theta_5)=|\theta_4|\) and
+\(\theta_7=g_7(\theta_0,\theta_1,\cdots,\theta_6)=\theta_5+\theta_6\) have
+\begin{align*}
+\pa{\theta_5}x&=\pa{\theta_5}{\theta_3}\pa{\theta_3}x\times 2&&\norm{\pa{\theta_5}x}\le\frac14\times2=\frac12\\
+\pa{\theta_6}x&=\pa{\theta_6}{\theta_4}\pa{\theta_4}x&&\norm{\pa{\theta_6}x}
+\le\norm{\pa{\theta_6}{\theta_4}}\norm{\pa{\theta_6}{\theta_4}}=|\omega|+2\\
+\pa{\theta_7}x&=\pa{\theta_7}{\theta_5}\pa{\theta_5}x+\pa{\theta_7}{\theta_6}\pa{\theta_6}x&&\norm{\pa{\theta_7}x}
+\le\norm{\pa{\theta_5}x}+\norm{\pa{\theta_6}x}\le|\omega|+\frac52.
+\end{align*}
+Thus, the Lipschitz constant for the function \(f_\omega\) is upper bounded by \(\omega+\frac52\).
 
 %%
 \section{AutoGrad}
