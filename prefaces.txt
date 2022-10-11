@@ -1,0 +1,21 @@
+1. Towards Evaluating the Robustness of NN
+
+Deep neural networks have become increasingly effective at many difficult machine-learning tasks.
+In the image recognition domain, they are able to recognize images with near-human accuracy.
+They are also used for speech recognition, NLP, and playing games.
+
+However, researchers have discovered that existing neural networks are vulnerable to attack. Szegedy et al. first noticed the existence of adversarial examples in the image classification domain: it is possible to transform an image by  small amount and thereby change how the image is classified.
+Often, the total amount of change required can be so small as to be undetectable.
+
+2. Lipschitz Regugularity
+Deep neural network made a striking entree in machine learning and quickly became state-of-the-art algorithms in many tasks such as computer vision, speech recognition and generation or NLP.
+
+However, deep neural networks are known for being very sensitive to their input, and adversarial examples provide a good illustration of their lack of robustness.
+Indeed, a well-chosen small perturbation of the input image can mislead a neural network and significantly decrease its classification accuracy.
+One metric to assess the robustness of neural networks to small perturbations is the Lipschitz constant, which upper bounds the relationship between input perturbation and output variation for a given distance.
+For generative models, the recent Wasserstein GAN improved the training stability of GANs by reformulating the optimization problem as a minimization of the Wasserstein distance between the real and generated distributions.
+However, this method relies on an efficient way of constraining the Lipschitz constant of the critic, which was only partially addressed in the original paper, and the subject of several follow-up works.
+
+3. Intriguing properties
+Deep neural networks are powerful learning models that achieve excellent performance on visual and speech recognitino problems.
+Neural networks achieve high performance because they can express arbitrary computation that consists of a modest number of massive parallel nonlinear steps.
