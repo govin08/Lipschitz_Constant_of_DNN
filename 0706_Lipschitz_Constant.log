@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.22)  11 OCT 2022 08:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.22)  11 OCT 2022 21:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -595,7 +595,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.95 \chapter
+l.86 \chapter
              {Lipschitz Constants of Functions Between Euclidean Spaces}
 [1
 
@@ -603,72 +603,66 @@ l.95 \chapter
 Chapter 2.
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <8> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 101.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 92.
 
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 101.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 92.
 
 [2
 
-] [3] [4] [5] [6] [7] [8]
+] [3] [4] [5] [6] [7] [8] [9]
 
-LaTeX Warning: Reference `eq:square_matrix_inequality_1' on page 9 undefined on
- input line 409.
+LaTeX Warning: Reference `eq:square_matrix_inequality_1' on page 10 undefined o
+n input line 400.
 
-[9] [10] [11]
-Overfull \hbox (5.42062pt too wide) in paragraph at lines 509--509
+[10] [11] [12] [13]
+Overfull \hbox (5.42062pt too wide) in paragraph at lines 500--500
 []\T1/cmr/bx/n/17.28 Elementwise Ap-pli-ca-tion of Non-lin-ear Func-
  []
 
-[12] [13]
+[14] [15]
 Chapter 3.
-[14
+[16
 
 ]
-Overfull \hbox (6.91656pt too wide) in paragraph at lines 597--597
+Overfull \hbox (6.91656pt too wide) in paragraph at lines 588--588
 []\T1/cmr/bx/n/17.28 AutoLip : Up-per-bound-ing the Lip-s-chitz con-
  []
 
-<computation_graph.png, id=272, 405.6756pt x 110.814pt>
+<computation_graph.png, id=250, 411.939pt x 118.041pt>
 File: computation_graph.png Graphic file (type png)
 <use computation_graph.png>
-Package pdftex.def Info: computation_graph.png  used on input line 605.
-(pdftex.def)             Requested size: 312.00119pt x 85.22894pt.
-[15 <./computation_graph.png>] [16]
+Package pdftex.def Info: computation_graph.png  used on input line 596.
+(pdftex.def)             Requested size: 390.0pt x 111.75284pt.
+[17] [18 <./computation_graph.png>]
 Chapter 4.
-[17
+[19
 
 ]
-Underfull \hbox (badness 1331) in paragraph at lines 637--638
+Underfull \hbox (badness 1331) in paragraph at lines 645--646
 []\T1/cmr/m/n/12 Rudin, Wal-ter. \T1/cmr/m/it/12 Real and Com-plex Anal-y-sis. 
 \T1/cmr/m/n/12 : McGraw-Hill Sci-
  []
 
-[18
+[20
 
-] (./0706_Lipschitz_Constant.aux)
+] [21] (./0706_Lipschitz_Constant.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `0706_Lipschitz_Constant.out' has changed.
-
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `0706_Lipschitz_Constant.out':
-(rerunfilecheck)             Before: 5DA77ED7BCC4647FCFD311E0AEF4F94F;2728
-(rerunfilecheck)             After:  717FB599683F52E9CF1ACF2384CC6643;2738.
+Package rerunfilecheck Info: File `0706_Lipschitz_Constant.out' has not changed
+.
+(rerunfilecheck)             Checksum: 717FB599683F52E9CF1ACF2384CC6643;2738.
  ) 
 Here is how much of TeX's memory you used:
- 11927 strings out of 478353
- 183074 string characters out of 5852100
- 483679 words of memory out of 5000000
- 29705 multiletter control sequences out of 15000+600000
- 435236 words of font info for 128 fonts, out of 8000000 for 9000
+ 11868 strings out of 478353
+ 182137 string characters out of 5852100
+ 482779 words of memory out of 5000000
+ 29674 multiletter control sequences out of 15000+600000
+ 426308 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,17n,76p,441b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,17n,76p,497b,589s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
@@ -682,46 +676,17 @@ ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/am
-sfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumt
-ype1/nanummjmac.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/n
-anummjmad.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummj
-mae.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb0.pf
-b><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb1.pfb><c:/
-texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb2.pfb><c:/texliv
-e/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb3.pfb><c:/texlive/2021
-/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb4.pfb><c:/texlive/2021/texmf
--dist/fonts/type1/public/nanumtype1/nanummjmb5.pfb><c:/texlive/2021/texmf-dist/
-fonts/type1/public/nanumtype1/nanummjmb7.pfb><c:/texlive/2021/texmf-dist/fonts/
-type1/public/nanumtype1/nanummjmb8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
-public/nanumtype1/nanummjmb9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/nanumtype1/nanummjmba.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanum
-type1/nanummjmbb.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/
-nanummjmbc.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanumm
-jmbd.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc0.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc1.pfb><c:
-/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc2.pfb><c:/texli
-ve/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc5.pfb><c:/texlive/202
-1/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc6.pfb><c:/texlive/2021/texm
-f-dist/fonts/type1/public/nanumtype1/nanummjmc7.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/nanumtype1/nanummjmc8.pfb><c:/texlive/2021/texmf-dist/fonts
-/type1/public/nanumtype1/nanummjmc9.pfb><c:/texlive/2021/texmf-dist/fonts/type1
-/public/nanumtype1/nanummjmcc.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
-c/nanumtype1/nanummjmd0.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanu
-mtype1/nanummjmd2.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1
-/nanummjmd4.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanum
-mjmd5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd6.
-pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd7.pfb><c
-:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/
-2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf
--dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2021/texmf-dist/font
-s/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
-blic/cm-super/sfbx2488.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
-per/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti12
-00.pfb>
-Output written on 0706_Lipschitz_Constant.pdf (21 pages, 1675834 bytes).
+sfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-sup
+er/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx144
+0.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/
+texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb><c:/texlive/20
+21/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2021/texmf-d
+ist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/
+type1/public/cm-super/sfti1200.pfb>
+Output written on 0706_Lipschitz_Constant.pdf (24 pages, 360172 bytes).
 PDF statistics:
- 539 PDF objects out of 1000 (max. 8388607)
- 405 compressed objects within 5 object streams
- 85 named destinations out of 1000 (max. 500000)
+ 397 PDF objects out of 1000 (max. 8388607)
+ 323 compressed objects within 4 object streams
+ 88 named destinations out of 1000 (max. 500000)
  118 words of extra memory for PDF output out of 10000 (max. 10000000)
 
