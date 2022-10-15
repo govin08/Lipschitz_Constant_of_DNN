@@ -589,6 +589,25 @@ and that \(||D_{\bx}(f)||\) is nothing but the operator norm we've defined in th
 %%
 \section{AutoLip : Upperbounding the Lipschitz constant by an algorithmic method}
 
+Here is an algorithm called \emph{AutoLip} that evaluate an upperbound for the Lipschitz constant.
+The algorithm can be applied to any deterministic (not stochastic, e.g. Bayesian neural networks) neural network with the computation graph, which is a composite of elementary functions.
+The only difficulty in the Rademacher theorem is the presense of the supremum ; it is not easy or sometimes impossible to evaluate the exact value of the supremum or the maximum of a function.
+But, it is possible, in most case, to find the maximum in the relatively simple function.
+In other words, the supremum for the Jacobian matrix can be calcuated for most elementary functions.
+
+For a function \(f:\mathbb R^n\to\mathbb R^m\), we've used the notation for the jacobian matrix of \(f\) as
+\[D_{\boldsymbol x}(f)\]
+in the previous section.
+In this section, we occationally use
+\[\frac{\partial\boldsymbol y}{\partial\boldsymbol x}\]
+to represent the same matrix, provided that \(\boldsymbol y=f(\boldsymbol x)\).
+In this context, \(\left|\left|\frac{\partial\boldsymbol y}{\partial\boldsymbol x}\right|\right|\) represents the operator norm for the matrix.
+Furthermore, if \(y\) is a function of a univariate variable \(x\), we usually denote the ordinary derivative of \(y\) with respect to \(x\) as \(\frac{dy}{dx}\).
+But, in order to unify the notation,we employ \(\frac{\partial y}{\partial x}\).
+
+
+%%%
+\subsection{An exmaple for  univariate case}
 Consider, for example, a univariate function \(f_\omega\) with a parameter \(\omega\) defined by
 \[f_\omega(x) = \frac1{1+e^{-x}}+\left|2x+\omega\cos x\right|.\]
 In order to construct a systematic way to estimate the constant and to make use of automatic differentiation in implementing the backpropagation by Tensorflow or Pytorch, we think of a computation graph for \(f_\omega\). (Figure \ref{computational_graph})
@@ -612,8 +631,8 @@ Then, the \emph{operator norm} or the Lipschitz constant \norm{\pa{\theta_2}x} o
 Again, since \(\theta_3=g_3(\theta_0,\theta_1,\theta_2)=2\theta_0\), we have
 \[\pa{\theta_3}x=\pa{\theta_3}{\theta_0}\pa{\theta_0}x+\pa{\theta_3}{\theta_1}\pa{\theta_1}x+\pa{\theta_3}{\theta_2}\pa{\theta_2}x=2,\]
 and thus \(\norm{\pa{\theta_2}x}=2\).
-Note that the value of partial derivatives evaluated above, such as \pa{\theta_1}x and \pa{\theta_2}x, can be applied to calcuate \pa{\theta_2}x.
-To represent that \norm{\pa{\theta_2}x} is upper bounded by 2, we write \(L_3=2\).
+Note that the value of partial derivatives evaluated above, such as \pa{\theta_1}x and \pa{\theta_2}x, can be applied to calcuate \pa{\theta_3}x.
+To represent that \norm{\pa{\theta_3}x} is upper bounded by 2, we write \(L_3=2\).
 Likewise, let \(L_1=0\) and \(L_2=1\).
 
 For the next parameter \(\theta_4=g_4(\theta_0,\theta_1,\theta_2,\theta_3)=\theta_3+\theta_1\theta_2\), we have
@@ -630,7 +649,7 @@ and
 &\le|\omega|\cdot L_2+L_3=|\omega|+2.
 \end{align*}
 Thus, \(L_4=|\omega|+2\).
-(Here, tighter bound \(|\omega|\) is possible in this case, but we are proposing a genenral upper bound in this section.)
+%(Here, tighter bound \(|\omega|\) than \(|\omega|+2\) is possible in this case, but we are proposing a genenral upper bound in this section.)
 
 In similar fashions,
 \(\theta_5=g_5(\theta_0,\theta_1,\cdots,\theta_4)=\frac1{1+e^{-\theta_3}}\),
@@ -644,6 +663,33 @@ In similar fashions,
 \le\norm{\pa{\theta_5}x}+\norm{\pa{\theta_6}x}\le|\omega|+\frac52.
 \end{align*}
 Thus, the Lipschitz constant for the function \(f_\omega\) is upper bounded by \(\omega+\frac52\).
+
+%%%
+\subsection{AutoLip algorithm}
+Consider \(f:\mathbb R^n\to\mathbb R^m\), a composite function of elementary functions \(g_0\), \(g_1\), \(g_2\), \(\cdots\), \(g_K\), so that
+\[f={g_K}\circ\cdots\circ{g_2}\circ{g_1}\circ{g_0}.\]
+For every \(\boldsymbol x\in\mathbb R^n\), define the intermediate variables
+\(\theta_0=g_0(\boldsymbol x)\), \(\theta_1=g_1(g_0(\boldsymbol x))\), \(\cdots\), \(\theta_K=g_K(g_{K-1}(\cdots g_1(g_0(\boldsymbol x))))=f(\boldsymbol x)\).
+For a notational purpose, let \(g_0\) be the identity function and think of \(g_k\) as a function of \(\theta_0\), \(\theta_1\), \(\cdots\), \(\theta_{k-1}\) for \(1\le k\le K\) and write
+%\begin{align*}
+%\theta_1&=g_1(\theta_0,\theta_1,\cdots,\theta_{K-1})\\
+%\theta_2&=g_2(\theta_0,\theta_1,\cdots,\theta_{K-1})\\
+%&\vdots\\
+%\theta_K&=g_K(\theta_0,\theta_1,\cdots,\theta_{K-1}).
+%\end{align*}
+\begin{align*}
+\theta_1&=g_1(\theta_0)\\
+\theta_2&=g_2(\theta_0,\theta_1)\\
+&\vdots\\
+\theta_K&=g_K(\theta_0,\theta_1,\cdots,\theta_{K-1}).
+\end{align*}
+An upper bound \(L_k\) for the lipschitz constant \(\sup_{\boldsymbol x}\left|\left|\frac{\partial\theta_k}{\partial\boldsymbol x}\right|\right|\) of \(\theta_k\), can be evaulated inductively, where \(L_K\) is an upper bound for \(\lip(f)\).
+
+Let \(L_0=1\) and suppose that \(k\) is an integer such that \(1\le k\le K\).
+
+%%%
+\subsection{AutoLip applied to the univariate example}
+
 
 %%
 \section{AutoGrad}
