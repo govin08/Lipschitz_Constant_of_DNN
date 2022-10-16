@@ -11,10 +11,13 @@
 \contentsline {section}{\numberline {2.6}Composites of Functions}{15}{section.2.6}%
 \contentsline {chapter}{\numberline {3}Lipschitz Constants of Neural Networks}{16}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Rademacher Theorem}{16}{section.3.1}%
-\contentsline {section}{\numberline {3.2}AutoLip : Upperbounding the Lipschitz constant by an algorithmic method}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Upperbounding the Lipschitz constant : AutoLip}{17}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}An exmaple for univariate case}{18}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}AutoLip}{20}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}AutoLip applied to 2-layered-perceptron}{22}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}AutoGrad}{22}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Conclusion}{23}{chapter.4}%
-\contentsline {chapter}{Bibliography}{24}{chapter.4}%
+\contentsline {section}{\numberline {3.3}Multi-Layer Perceptrons}{22}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Convolutional Neural Networks}{24}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Convolutional layers}{24}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Power method}{25}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Max pooling layers}{27}{subsection.3.4.3}%
+\contentsline {chapter}{\numberline {4}Conclusion}{30}{chapter.4}%
+\contentsline {chapter}{Bibliography}{31}{chapter.4}%
