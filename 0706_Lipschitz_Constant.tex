@@ -1,6 +1,6 @@
 \documentclass[12pt]{report}
 \usepackage{amscd,amsthm,amsmath,amstext,amssymb,mathrsfs}
-\usepackage{epsfig,longtable,verbatim,graphicx,multirow,array,wasysym,esint,hyperref,kotex,color}
+\usepackage{epsfig,longtable,verbatim,graphicx,multirow,array,wasysym,esint,hyperref,kotex,color,algorithm2e}
 \usepackage[T1]{fontenc}
 \usepackage[sort&compress,square,numbers]{natbib}
 
@@ -590,7 +590,8 @@ and that \(||D_{\bx}(f)||\) is nothing but the operator norm we've defined in th
 \section{AutoLip : Upperbounding the Lipschitz constant by an algorithmic method}
 
 Here is an algorithm called \emph{AutoLip} that evaluate an upperbound for the Lipschitz constant.
-The algorithm can be applied to any deterministic (not stochastic, e.g. Bayesian neural networks) neural network with the computation graph, which is a composite of elementary functions.
+The algorithm can be applied to any deterministic (resp. stochastic, e.g. bayesian neural networks) neural network with the computation graph, which is a composite of elementary functions.
+
 The only difficulty in the Rademacher theorem is the presense of the supremum ; it is not easy or sometimes impossible to evaluate the exact value of the supremum or the maximum of a function.
 But, it is possible, in most case, to find the maximum in the relatively simple function.
 In other words, the supremum for the Jacobian matrix can be calcuated for most elementary functions.
@@ -665,7 +666,7 @@ In similar fashions,
 Thus, the Lipschitz constant for the function \(f_\omega\) is upper bounded by \(\omega+\frac52\).
 
 %%%
-\subsection{AutoLip algorithm}
+\subsection{AutoLip}
 Consider \(f:\mathbb R^n\to\mathbb R^m\), a composite function of elementary functions \(g_0\), \(g_1\), \(g_2\), \(\cdots\), \(g_K\), so that
 \[f={g_K}\circ\cdots\circ{g_2}\circ{g_1}\circ{g_0}.\]
 For every \(\boldsymbol x\in\mathbb R^n\), define the intermediate variables
@@ -685,10 +686,57 @@ For a notational purpose, let \(g_0\) be the identity function and think of \(g_
 \end{align*}
 An upper bound \(L_k\) for the lipschitz constant \(\sup_{\boldsymbol x}\left|\left|\frac{\partial\theta_k}{\partial\boldsymbol x}\right|\right|\) of \(\theta_k\), can be evaulated inductively, where \(L_K\) is an upper bound for \(\lip(f)\).
 
-Let \(L_0=1\) and suppose that \(k\) is an integer such that \(1\le k\le K\).
+Let \(L_0=1\).
+Suppose that suppose that \(k\) is an integer such that \(1\le k\le K\) and we have an upper bound \(L_i\) of the Lipschitz constant
+\[\sup_{\boldsymbol x}\left|\left|\frac{\partial\theta_i}{\partial\boldsymbol x}\right|\right|\le L_i\]
+for \(1\le i\le k-1\).
+Since
+\begin{align*}
+\frac{\partial \theta_k}{\partial\boldsymbol x}
+&=\frac{\partial\theta_k}{\partial\theta_0}\frac{\partial\theta_0}{\partial\boldsymbol x}
++\frac{\partial\theta_k}{\partial\theta_1}\frac{\partial\theta_1}{\partial\boldsymbol x}
++\cdots
++\frac{\partial\theta_k}{\partial\theta_{k-1}}\frac{\partial\theta_{k-1}}{\partial\boldsymbol x}\\
+&=\sum_{i=1}^{k-1}\frac{\partial\theta_k}{\partial\theta_i}\frac{\partial\theta_i}{\partial\boldsymbol x},
+\end{align*}
+it follows that
+\begin{align*}
+\left|\left|\frac{\partial \theta_k}{\partial\boldsymbol x}\right|\right|
+&\le\sum_{i=1}^{k-1}
+\left|\left|\frac{\partial\theta_k}{\partial\theta_i}\right|\right|
+\left|\left|\frac{\partial\theta_i}{\partial\boldsymbol x}\right|\right|
+\end{align*}
+and that
+\begin{align*}
+\sup_{\boldsymbol x}\left|\left|\frac{\partial \theta_k}{\partial\boldsymbol x}\right|\right|
+&\le\sum_{i=1}^{k-1}
+\max\left|\left|\frac{\partial\theta_k}{\partial\theta_i}\right|\right|\cdot L_i.
+\end{align*}
+Let \(L_k\) be the left hand side of the above inequality and proceed for \(k+1\).
+After \(K\) iterations, we have an upper bound \(L_K\) of the lipschitz constant for \(\theta_K=f(\boldsymbol x)\).
+(\textbf{Algorithm} \ref{alg:1})
+
+\RestyleAlgo{boxruled}
+\LinesNumbered
+\begin{algorithm}
+\SetKwInput{KwData}{Input}
+\SetKwInput{KwResult}{Output}
+\SetAlgoLined
+\KwData{the function \(f=g_K\circ\cdots\circ g_1\),\\ where \(\theta_k=(g_k\circ\cdots\circ g_1)(\boldsymbol x)\) for \(1\le k\le K\)}
+\KwResult{An upper bound \(L\) for \(\lip(f)\)}
+\(k\gets 1\)\;
+\(L_1\gets1\)\;
+\While{\(k<K\)}{
+\(L_k\gets\sum_{i=1}^{k-1}\left(\max\left|\left|\frac{\partial\theta_k}{\partial\theta_i}\right|\right|\right)L_i\)\;
+\(k\gets k+1\)\;
+}
+\(L\gets L_K\)
+\caption{AutoLip}
+\label{alg:1}
+\end{algorithm}
 
 %%%
-\subsection{AutoLip applied to the univariate example}
+\subsection{AutoLip applied to 2-layered-perceptron}
 
 
 %%
