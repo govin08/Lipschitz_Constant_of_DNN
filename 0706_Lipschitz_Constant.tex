@@ -118,7 +118,7 @@ It is useful to know that there is an equivalent definition ;
 \begin{equation}\label{eq:LC2}
 \lip(f)=\sup_{\bx\neq\by}\frac{||f(\bx)-f(\by)||}{||\bx-\by||}
 \end{equation}
-To prove the equality, let
+To show the equivalence of the two definitions, let
 \begin{equation}\label{eq:equivalent_def}
 \begin{aligned}
 L_1&=\inf\{c\ge0:||f(\bx)-f(\by)||\le c||\bx-\by||,\quad\bx,\by\in\mathbb R^n\}\\
@@ -139,10 +139,11 @@ Assuming \(\bx\neq \by\), we have
 \frac{||f(\bx)-f(\by)||}{||\bx-\by||}\le c.
 \]
 Taking supremum for all \bx{} and \by{} (\(\bx\neq\by\)), we have \(L_2\le c.\) and taking infimum for all \(c\le\mathcal L_1\) yields \(L_2\le L_1\).
+Thus the two definitions are indeed equivalent.
 
 % inf = min
 The optimal Lipschitz constant \(\lip(f)\) is not only the infimum, but also the minimum of \(L\) satisfying \eqref{eq:LC1}.
-To show this, it suffices to show that \(\lip(f)\in\mathcal L_1\), or that \(c=\lip(f)\) satisfies the condition.
+To show this, it suffices to prove that \(\lip(f)\in\mathcal L_1\), or that \(c=\lip(f)\) satisfies the condition.
 Let \(\bx,\:\by\in\mathbb R^n\).
 If \(\bx=\by\), then \eqref{eq:LC1} holds trivially.
 Assuming \(\bx\neq\by\), we have
@@ -213,13 +214,14 @@ The \text{ReLU} function
 \lip(\text{ReLU})=1.
 \end{equation}
 %Although not being differentiable, the case of rectified linear unit \(\text{ReLu}(x)=\max\{0,x\}\) can also be easily evaluated to be \(1\).
-Here is a list of the optimal Lipschitz constants of univariate activation functions, frequently used in machine learning and deep learning.
+Here is a list of the optimal Lipschitz constants of univariate activation functions, frequently used in machine learning and deep learning. (\textbf{Table} \ref{tab:univariate_activation_functions})
  
 \renewcommand\arraystretch{1.5}
 \begin{table}[ht]
 \centering
-\caption{The optimal Lipschitz constants of univariate activation functions.
-\(\alpha=0.1\) for Leaky ReLU and \(\alpha=1\) for ELU.}
+\caption{The Lipschitz constants of univariate activation functions.}
+\label{tab:univariate_activation_functions}
+%\(\alpha=0.1\) for Leaky ReLU and \(\alpha=1\) for ELU.
 \begin{tabular}[t]{llc}
 \toprule
 Activation Functions	&Formula									& $\lip(f)$\\
@@ -256,7 +258,7 @@ Because of the linearity, the condition \eqref{eq:LC1} reduces to
 \end{equation}
 
 The smallest \(c\) which satisfies \eqref{eq:linear_LC} is called \emph{the operator norm of \(W\)} and denoted by \(||W||\).
-Thus, the optimal Lipstchitz constant of \(f\) equals the operator norm of \(W\) ; \(||W||=\lip(f)\).
+Thus, the optimal Lipschitz constant of \(f\) equals the operator norm of \(W\) ; \(||W||=\lip(f)\).
 The definitions of the forms \eqref{eq:equivalent_def} are as follows;
 \begin{equation}\label{eq:linear_equivalent_def}\begin{aligned}
 ||W||
@@ -313,7 +315,7 @@ if \(W\in\mathcal M_{m,n}(\mathbb R)\) and \(V\in\mathcal M_{n,k}(\mathbb R)\), 
 ||WV||\le||W||\:||V||.
 \end{equation}
 This is because of the inequality
-\[||(WV)\bx||=||W(V\bx)||\le||W||\:||V\bx||\le||W|\:||V||\:||\bx||\]
+\[||(WV)\bx||=||W(V\bx)||\le||W||\:||V\bx||\le||W||\:||V||\:||\bx||\]
 and the minimality of \(||WV||\).
 
 %
@@ -341,7 +343,7 @@ such that
 \[W=V\Lambda V^T,\]
 where \(\Lambda=\text{diag}\{\lambda_1,\cdots,\lambda_n\}\) and \(\lambda_i\) is an eigenvalue of \(W\) with the corresponding eigenvector \(\bv_i\).
 Note that \(\{\bv_1,\cdots,\bv_n\}\) forms an orthonormal basis for \(\mathbb R^n\).
-For any \(\bx\in\mathbb R^n\), there exist real numbers \(c_1\), \(\cdots\), \(c_n\) such that \(\bx=c_1\bv_1+\cdots+c_n\bv_n\).
+For any nonzero \(\bx\in\mathbb R^n\), there exist real numbers \(c_1\), \(\cdots\), \(c_n\) such that \(\bx=c_1\bv_1+\cdots+c_n\bv_n\).
 Since
 \begin{align*}
 W\bx
@@ -417,9 +419,9 @@ Then, the operator norm \(||W||\) is the maximal absolute eigenvalue of \(W\).
 
 %
 \subsection{Evaluation of \(||W||\) for rectangular matrices}\label{sec:evaluation_for_rectangular_matrices}
-Almost all matrices that we encounter in machine learning problem are neither square matrices, nor are they symmetric matrices.
+Almost all matrices that we encounter in machine learning problem are neither symmetric matrices, nor are they square matrices.
 But, we can always calculate the Lipschitz constant or the operator norm of any rectangular matrices.
-Aside from the properties listed in the Proposition \ref{prop:operator_norm_1}, there is a useful criteria that help find the optimal Lipschitz constant of any rectangular matrix.
+%Aside from the properties listed in the Proposition \ref{prop:operator_norm_1}, there is a useful criteria that help find the optimal Lipschitz constant of any rectangular matrix.
 
 \begin{theorem}\label{theo:evaluation_for_rectangular_matrices}
 \cite{KC}
@@ -438,7 +440,7 @@ The euclidean norm \(||\bx||\) of a vector \(\bx\in\mathbb R^n\) in \eqref{eq:eu
 \begin{equation}\label{eq:euclidean norm_2}
 ||\bx||=\sqrt{\langle \bx,\bx\rangle}.
 \end{equation}
-The inner product \(\langle \bx,\by\rangle=\bx^T\by\) has the following properties and we omit the proofs of them.
+The inner product \(\langle \bx,\by\rangle=\bx^T\by\) has the following properties. (we omit the proofs of them.)
 \begin{gather*}
 \langle \bx,W\by\rangle=\langle W^T\bx,\by\rangle,\\
 \langle k\bx,\by\rangle=k\langle \bx,\by\rangle,\\
@@ -479,7 +481,7 @@ and this proves \eqref{eq:evaluation_of_operator_norm_for_rectangular_matrix}.
 
 For example, we can evaluate the operator norm of \(W_4\) and \(W_5\) in the previous subsection.
 We have
-\[{W_4}^TW_4=\begin{bmatrix}1&3\\2&0\end{bmatrix},\quad{W_5}^TW_5=\begin{bmatrix}0&0\\0&1\end{bmatrix}.\]
+\[{W_4}^TW_4=\begin{bmatrix}5&3\\3&9\end{bmatrix},\quad{W_5}^TW_5=\begin{bmatrix}0&0\\0&1\end{bmatrix}.\]
 \({W_4}^TW_4\) has its eigenvalues \(7\pm\sqrt{13}\), thus \(||W_4||=\sqrt{7+\sqrt{13}}\).
 And \({W_5}^TW_5\) has eigenvalues \(0\) and \(1\) ; \(||W_5||=\sqrt1=1\) as expected.
 As a rectangular matrix, we may think of
@@ -567,14 +569,14 @@ Now we turn to the problem of finding the optimal Lischitz constant of various a
 
 For locally Lipschitz function, it is possible to express the Lipschitz constant of \(f\) in its exact form, as the Rademacher Theorem suggests.
 But, it is not always easy or feasible to find the exact value of Lipschitz constant whenever the function \(f\) is given.
-In fact, although the function is of simple form such as 2-layered MLP, the problem of evaluating the Lipschitz function is NP-hard.
+In fact, although the function is of simple form such as 2-layered MLP, solving the precise value of Lipschitz constant of the function is known to be NP-hard.
 Instead of struggling to find analytic solutions, we present a systematic algorithm for each architectuare of neural network\cite{VA-SK}.
 
 %%
 \section{Rademacher Theorem}
 Here is a theorem that can be applied to all Lipschitz functions between euclidean spaces.
-The Lipschitz condition that we impose is not the global one \eqref{eq:LC1} ; it only need to be locally Lipschitz.
-It has two conclusions : the differentiability (a.e.) and the formula for the optimal constant.
+The Lipschitz condition that we impose is not the global one ; it only need to be locally Lipschitz.
+It has two conclusions : the differentiability in almost everywhere sense and the formula for the optimal constant.
 
 \begin{theorem}\label{theo:Rademacher}
 \cite{HF}
@@ -582,7 +584,7 @@ Let \(f:\mathbb R^n\to\mathbb R^m\) be a locally Lipschitz function.
 Then,
 \(f\) is differentiable almost everywhere, and
 \end{theorem}
-\begin{equation}
+\begin{equation}\label{eq:Rademacher}
 \lip(f) = \sup_{\bx\in\mathbb R^n}||D_{\bx}(f)||
 \end{equation}
 
@@ -592,29 +594,32 @@ As for one-dimensional case, many of the textbooks of analysis covered this issu
 In the process, concepts like absolute continuity, Radon-Nykodym theorem, total variation are involved \cite{WR}.
 
 The second statement, or the optimal Lipschitz constant is the one that we can use for our purpose.
-Note first that, \(D_{\bx}f\) is the Jacobian matrix of \(f\) or a matrix \(A\) satisfying
+Note first that, \(D_{\bx}f\) is the Jacobian matrix \(A\) of \(f\) satisfying
 \[\lim_{\by\to\bx}\frac{||f(\by)-f(\bx)-A(\by-\bx)||}{||\by-\bx||}=0,\]
 and that \(||D_{\bx}(f)||\) is nothing but the operator norm we've defined in the previous chapter.
+
+Note that although the equation \eqref{eq:Rademacher} expresses \(\lip(f)\) explicitly, it doesn't mean that we can actually find the value of \(\lip(f)\).
+%Although the supremum or the maximum of a function exists, it is sometimes impossible to find the supremum or the maximum.
 
 %%
 \section{Upperbounding the Lipschitz constant : AutoLip}
 
 Here is an algorithm called \emph{AutoLip} that evaluate an upperbound for the Lipschitz constant.
-The algorithm can be applied to any deterministic (resp. stochastic, e.g. bayesian neural networks) neural network with the computation graph, which is a composite of elementary functions.
+The algorithm can be applied to any deterministic neural network (resp. stochastic neural networks or bayesian neural networks) with the computation graph, which is a composite of elementary functions.
 
-The only difficulty in the Rademacher theorem is the presense of the supremum ; it is not easy or sometimes impossible to evaluate the exact value of the supremum or the maximum of a function.
+The only difficulty in the Rademacher theorem is the expression supremum ; it is not easy or sometimes impossible to evaluate the exact value of the supremum or the maximum of a function.
 But, it is possible, in most case, to find the maximum in the relatively simple function.
 In other words, the supremum for the Jacobian matrix can be calcuated for most elementary functions.
 
 For a function \(f:\mathbb R^n\to\mathbb R^m\), we've used the notation for the jacobian matrix of \(f\) as
 \[D_{\boldsymbol x}(f)\]
 in the previous section.
-In this section, we occationally use
+In this section, we occasionally use
 \[\frac{\partial\boldsymbol y}{\partial\boldsymbol x}\]
 to represent the same matrix, provided that \(\boldsymbol y=f(\boldsymbol x)\).
 In this context, \(\left|\left|\frac{\partial\boldsymbol y}{\partial\boldsymbol x}\right|\right|\) represents the operator norm for the matrix.
 Furthermore, if \(y\) is a function of a univariate variable \(x\), we usually denote the ordinary derivative of \(y\) with respect to \(x\) as \(\frac{dy}{dx}\).
-But, in order to unify the notation,we employ \(\frac{\partial y}{\partial x}\).
+But, in order to unify the notation, we stick to use the partial derivative notation \(\frac{\partial y}{\partial x}\).
 
 
 %%%
@@ -634,17 +639,26 @@ We can bound the Lipschitz constant of \(f_\omega\) from above, by upperbounding
 %The derivative of \(f_\omega\), and the Lipschitz constant of it can be evaluated consecutively as follows.
 %Since, \(\theta_i\) is a function of \(\theta_0\), \(\theta_1\), \(\theta_2\), \(\cdots\), \(\theta_{i-1}\), the partial derivative \$(\frac{\partial\theta_i}{\partial x}\) can be evaluated inductively as follows.
 Since \(\theta_1=g_1(\theta_0)=\omega\), we have \(\frac{\partial\theta_1}{\partial x}=0\).
-The next parameter \(\theta_2\) is a function of two variables ; \(\theta_2=g_2(\theta_0,\theta_1)=\cos\theta_0\).
+The next parameter \(\theta_2\) is a function of one variable \(\theta_0\), but we regard \(\theta_2\) as a function of two variables ; \(\theta_2=g_2(\theta_0,\theta_1)=\cos\theta_0\).
 It is legal to apply the chain rule to get
-\[\pa{\theta_2}x=\pa{\theta_2}{\theta_0}\pa{\theta_0}x+\pa{\theta_2}{\theta_1}\pa{\theta_1}x=-\sin x\]
-Then, the \emph{operator norm} or the Lipschitz constant \norm{\pa{\theta_2}x} of \(\theta_2\) is
-\[\norm{\pa{\theta_2}x}=\sup_x(-\sin x)=1.\]
+\begin{align*}
+\pa{\theta_2}x
+&=\pa{\theta_2}{\theta_0}\pa{\theta_0}x+\pa{\theta_2}{\theta_1}\pa{\theta_1}x\\
+&=(-\sin\theta_0)\times1+0\times0\\
+&=-\sin x.
+\end{align*}
+Then, the Lipschitz constant \(\lip(\theta_2)\) of \(\theta_2\) is
+\[\norm{\pa{\theta_2}x}=\sup_x|-\sin x|=1.\]
 Again, since \(\theta_3=g_3(\theta_0,\theta_1,\theta_2)=2\theta_0\), we have
-\[\pa{\theta_3}x=\pa{\theta_3}{\theta_0}\pa{\theta_0}x+\pa{\theta_3}{\theta_1}\pa{\theta_1}x+\pa{\theta_3}{\theta_2}\pa{\theta_2}x=2,\]
+\begin{align*}
+\pa{\theta_3}x
+&=\pa{\theta_3}{\theta_0}\pa{\theta_0}x+\pa{\theta_3}{\theta_1}\pa{\theta_1}x+\pa{\theta_3}{\theta_2}\pa{\theta_2}x\\
+&=2\times1+0\times0+0\times(-\sin x)=2,
+\end{align*}
 and thus \(\norm{\pa{\theta_2}x}=2\).
 Note that the value of partial derivatives evaluated above, such as \pa{\theta_1}x and \pa{\theta_2}x, can be applied to calcuate \pa{\theta_3}x.
 To represent that \norm{\pa{\theta_3}x} is upper bounded by 2, we write \(L_3=2\).
-Likewise, let \(L_1=0\) and \(L_2=1\).
+Likewise, let \(L_1=0\) and \(L_0=1\).
 
 For the next parameter \(\theta_4=g_4(\theta_0,\theta_1,\theta_2,\theta_3)=\theta_3+\theta_1\theta_2\), we have
 \begin{align*}
@@ -667,7 +681,7 @@ In similar fashions,
 \(\theta_6=g_6(\theta_0,\theta_1,\cdots,\theta_5)=|\theta_4|\) and
 \(\theta_7=g_7(\theta_0,\theta_1,\cdots,\theta_6)=\theta_5+\theta_6\) have
 \begin{align*}
-\pa{\theta_5}x&=\pa{\theta_5}{\theta_3}\pa{\theta_3}x\times 2&&\norm{\pa{\theta_5}x}\le\frac14\times2=\frac12\\
+\pa{\theta_5}x&=\pa{\theta_5}{\theta_3}\pa{\theta_3}x&&\norm{\pa{\theta_5}x}\le\frac14\times2=\frac12\\
 \pa{\theta_6}x&=\pa{\theta_6}{\theta_4}\pa{\theta_4}x&&\norm{\pa{\theta_6}x}
 \le\norm{\pa{\theta_6}{\theta_4}}\norm{\pa{\theta_6}{\theta_4}}=|\omega|+2\\
 \pa{\theta_7}x&=\pa{\theta_7}{\theta_5}\pa{\theta_5}x+\pa{\theta_7}{\theta_6}\pa{\theta_6}x&&\norm{\pa{\theta_7}x}
@@ -722,7 +736,7 @@ and that
 &\le\sum_{i=0}^{k-1}
 \sup\left|\left|\frac{\partial\theta_k}{\partial\theta_i}\right|\right|\cdot L_i.
 \end{align*}
-Let \(L_k\) be the left hand side of the above inequality and proceed for \(k+1\).
+Let \(L_k\) be the right hand side of the above inequality and proceed for \(k+1\).
 After \(K\) iterations, we have an upper bound \(L_K\) of the lipschitz constant for \(\theta_K=f(\boldsymbol x)\).
 (\textbf{Algorithm} \ref{alg:1})
 
@@ -765,27 +779,27 @@ With the computation graph illustrated in Figure \ref{computation_graph_2}, we h
 
 \begin{align*}
 k=0;\:\: L_0&=1\\
-k=1;\:\: L_1&=\sup\frac{\partial\theta_1}{\partial\theta_0}\times L_0=0\times1=0\\
+k=1;\:\: L_1&=\sup\norm{\frac{\partial\theta_1}{\partial\theta_0}}\times L_0=0\times1=0\\
 k=2;\:\: L_2&
-=\sup\frac{\partial\theta_2}{\partial\theta_0}\times L_0
-+\sup\frac{\partial\theta_2}{\partial\theta_1}\times L_1\\
+=\sup\norm{\frac{\partial\theta_2}{\partial\theta_0}}\times L_0
++\sup\norm{\frac{\partial\theta_2}{\partial\theta_1}}\times L_1\\
 &=||W||\times1+||\bx||\times0=||W||\\
 k=3;\:\: L_3&
-=\sup\frac{\partial\theta_3}{\partial\theta_0}\times L_0
-+\sup\frac{\partial\theta_3}{\partial\theta_1}\times L_1
-+\sup\frac{\partial\theta_3}{\partial\theta_2}\times L_2=0\\
+=\sup\norm{\frac{\partial\theta_3}{\partial\theta_0}}\times L_0
++\sup\norm{\frac{\partial\theta_3}{\partial\theta_1}}\times L_1
++\sup\norm{\frac{\partial\theta_3}{\partial\theta_2}}\times L_2=0\\
 k=4;\:\: L_4&
-=\sup\frac{\partial\theta_4}{\partial\theta_0}\times L_0
-+\sup\frac{\partial\theta_4}{\partial\theta_1}\times L_1
-+\sup\frac{\partial\theta_4}{\partial\theta_2}\times L_2
-+\sup\frac{\partial\theta_4}{\partial\theta_3}\times L_3\\
+=\sup\norm{\frac{\partial\theta_4}{\partial\theta_0}}\times L_0
++\sup\norm{\frac{\partial\theta_4}{\partial\theta_1}}\times L_1
++\sup\norm{\frac{\partial\theta_4}{\partial\theta_2}}\times L_2
++\sup\norm{\frac{\partial\theta_4}{\partial\theta_3}}\times L_3\\
 &=0\times1+0\times0+1\times||W||+1\times0=||W||\\
 k=5;\:\: L_5&
-=\sup\frac{\partial\theta_5}{\partial\theta_0}\times L_0
-+\sup\frac{\partial\theta_5}{\partial\theta_1}\times L_1
-+\sup\frac{\partial\theta_5}{\partial\theta_2}\times L_2
-+\sup\frac{\partial\theta_5}{\partial\theta_3}\times L_3
-+\sup\frac{\partial\theta_5}{\partial\theta_4}\times L_4\\
+=\sup\norm{\frac{\partial\theta_5}{\partial\theta_0}}\times L_0
++\sup\norm{\frac{\partial\theta_5}{\partial\theta_1}}\times L_1
++\sup\norm{\frac{\partial\theta_5}{\partial\theta_2}}\times L_2
++\sup\norm{\frac{\partial\theta_5}{\partial\theta_3}}\times L_3
++\sup\norm{\frac{\partial\theta_5}{\partial\theta_4}}\times L_4\\
 &=0\times1+0\times0+0\times||W||+0\times0+1\times||W||=||W||.
 \end{align*}
 The resulting upper bound for the Lipschitz constant is \(||W||\).
@@ -807,15 +821,15 @@ While linear layers are what we've discussed in the previous section, we need to
 %%%
 \subsection{Convolutional layers}\label{convolutional_layers}
 Consider a convolutional layer of \(5\times 5\) input array and \(3\times 3\) filters.
-To make it simple, suppose that it has only one channel and that padding option is set to \texttt{valid} so that the output array is of \(5\times 5\).
+To make it simple, suppose that it has only one channel and that padding option is set to \texttt{valid} so that the output array is of \(3\times 3\).
 Denote the input array, the filter and the output array by \(X\), \(F\) and \(Y\).
 Instead of viewing \(X\) and \(Y\) as matrices(e.g. \(X=[x_{ij}]_{5\times 5}\), \(Y=[y_{ij}]_{3\times 3}\)), let \(X\) and \(Y\) be column vectors of dimension \(25\) and \(9\), respectively, so that
 %Let \(X=(x_{ij})_{6\times 6}\), \(F=(f_{ij})_{3\times 3}\), \(Y=(y_{ij})_{4\times 4}\) be matrix for
-\[X=\begin{bmatrix}x_{11}\\x_{12}\\\vdots\\x_{66}\end{bmatrix},\quad
-Y=\begin{bmatrix}y_{11}\\y_{12}\\\vdots\\y_{44}\end{bmatrix}.\]
+\[X=\begin{bmatrix}x_{11}\\x_{12}\\\vdots\\x_{55}\end{bmatrix},\quad
+Y=\begin{bmatrix}y_{11}\\y_{12}\\\vdots\\y_{33}\end{bmatrix}.\]
 Then, we can think of the convolutional layer as left multiplication of a matrix \(F\) (Figure \ref{convolution_matrix}).
 
-The matrix \(F\) in general, is a sparse matrix which is wide ; the number of columns are far larger than the number of rows.
+%The matrix \(F\) in general, is a sparse matrix which is wide ; the number of columns are far larger than the number of rows.
 The Lipschitz constant for the convolution layer is, thus, the operator norm of the matrix \(F\) and we can use the Theorem \ref{theo:evaluation_for_rectangular_matrices}.
 
 %Although \(F\) is big and wide, the computation of \(||F||\) is not that hard.
@@ -842,7 +856,7 @@ Instead of applying the Theorem \ref{theo:evaluation_for_rectangular_matrices} a
 
 %%%
 \subsection{Power method}\label{sec:power_method}
-Supposet that \(F\in\mathbb R^{n\times n}\) is a diagonalizable matrix, or that \(F\) has distinct eigenvalues \(\lambda_1\), \(\lambda_2\), \(\cdots\), \(\lambda_n\).
+Supposet that \(A\in\mathbb R^{n\times n}\) is a diagonalizable matrix, or that \(A\) has distinct eigenvalues \(\lambda_1\), \(\lambda_2\), \(\cdots\), \(\lambda_n\).
 This is usually the case, since the probability that the characteristic equation happen to have repeated root is 0.
 
 Then, we have not only the distinct eigenvalues \(\lambda_1\), \(\cdots\), \(\lambda_n\), but also the linearly independent eigenvectors \(v_1\), \(\cdots\), \(v_n\).
@@ -883,7 +897,7 @@ If \(x\) is an eigenvector of a matrix \(A\), then its corresponding eigenvalue 
 \end{lemma}
 Here, \(\langle\cdot,\cdot\rangle\) is the inner product as defined in Subsection \ref{sec:evaluation_for_rectangular_matrices}.
 
-For rectangular matrix \(f\), for example, as in Subsection \label{convolutional_layers}, approximating algorithm for \(||F||\) is illustrated in \textbf{Algorithm} \ref{alg:2}.
+For rectangular matrix \(f\), for example, as in Subsection \ref{convolutional_layers}, approximating algorithm for \(||F||\) is illustrated in \textbf{Algorithm} \ref{alg:2}.
 
 %Therefore, the dominating eigenvalue \(\tilde\lambda\) of a square matrix \(A\) or the operator norm of \(A\) can be approximated by
 %\[\tilde\lambda\approx\frac{\langle A^{k+1}x,A^kx\rangle}{\langle A^kx,A^kx\rangle}.\]
@@ -912,8 +926,8 @@ Suppose that \(X\) consists \(4N\) numbers \(x_1\), \(x_2\), \(x_3\), \(x_4\), \
 Let \(x^{(1)}\), \(\cdots\), \(x^{(N)}\) be four dimensional vectors defined by
 \[x^{(1)}=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix},\cdots,x^{(N)}=\begin{bmatrix}x_{4N-3}\\x_{4N-2}\\x_{4N-1}\\x_{4N}\end{bmatrix}\]
 and write
-\[X=\begin{bmatrix}x^{(1)}\\\vdots\\x^{(N)}\end{bmatrix}\]
-by abusing notation.
+\[X=\begin{bmatrix}x^{(1)}\\\vdots\\x^{(N)}\end{bmatrix}.\]
+%by abusing notation.
 
 \begin{lemma}\label{lemm:maxs_1_lipschitz}
 A function \([a_1,\:a_2\:a_3,\:a_4]^T\mapsto\max a_i\) is 1-Lipschitz function.
@@ -923,30 +937,31 @@ Denote \(a=[a_1,\:a_2\:a_3,\:a_4]^T\) and \(b=[b_1,\:b_2\:b_3,\:b_4]^T\).
 Let \(a_{i_0}=\max a_i\).
 Then,
 \[\max a_i-\max b_i=a_{i_0}-\max b_i\le a_{i_0}-b_{i_0}\le\max (a_i-b_i).\]
-Similarly, we have \(\max b_i-\max a_i\le\max (a_i-b_i)\).
+Similarly, \[\max b_i-\max a_i\le\max (a_i-b_i).\]
 Thus,
-\[\left|\max b_i-\max a_i\right|\le\max (a_i-b_i),\]
+\[\left|\max a_i-\max b_i\right|\le\max (a_i-b_i),\]
 and \(\lip(\max)=1\).
 \end{proof}
 
-Now, we prove \(\lip(\text{MaxPool})=1\).
-The function \(\text{MaxPool}:\mathbb R^{4N}\to\mathbb R^N\) is defined by
+Now, we are ready to evaluate \(\lip(\text{MaxPool})\).
+The function \[\text{MaxPool}:\mathbb R^{4N}\to\mathbb R^N\] is defined by
 \[\text{MaxPool}(X)=\begin{bmatrix}\max \left(x^{(1)}\right)\\\vdots\\\max \left(x^{(N)}\right)\end{bmatrix}.\]
 Thus,
 \begin{align*}
 {\left|\left|f(X)-f(Y)\right|\right|_2}^2
 &=\sum_{n=1}^N\left(\max\left(x^{(n)}\right)-\max\left(y^{(n)}\right)\right)^2\\
 &\le\sum_{n=1}^N\left(\max\left(x^{(n)}-y^{(n)}\right)\right)^2\\
-&{\le\left|\left|\text{MaxPool}(X-Y)\right|\right|_2}^2,
+&{\le\left|\left|\text{MaxPool}(X-Y)\right|\right|_2}^2.
 \end{align*}
-as desired.
+Therefore,
+\[\lip(\text{MaxPool})=1.\]
 %\[m(x_1,\cdots,x_n)=\max(x_1,\cdots,x_n)\]
 %has \(\lip(m)=1\).
 
 %%%
 \chapter{Conclusion}
 For a function between metric spaces, the Lipschitz constant measures the rate of change of the function.
-If we conceive a neural network as a function between Euclidean space, the Lipschitz constant of the neural network tells us how much it is sensitive to the input.
+If we conceive a neural network as a function between Euclidean space, the Lipschitz constant of the neural network tells us how sensitive the output is, relative to the input.
 One can relate the Lipschitz constant to robustness.
 But the Lipschitz constant is not the same as the robustness, in that it measures the sensitivity when the parameters are fixed.
 

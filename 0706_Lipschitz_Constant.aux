@@ -2,13 +2,10 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
-\global\let\oldcontentsline\contentsline
-\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
-\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -44,7 +41,8 @@
 \newlabel{eq:tanh_LC}{{2.2.11}{5}{Real-valued Functions of a Real Variable}{equation.2.2.11}{}}
 \newlabel{eq:ReLU}{{2.2.12}{5}{Real-valued Functions of a Real Variable}{equation.2.2.12}{}}
 \newlabel{eq:ReLU_LC}{{2.2.13}{5}{Real-valued Functions of a Real Variable}{equation.2.2.13}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces The optimal Lipschitz constants of univariate activation functions. \(\alpha =0.1\) for Leaky ReLU and \(\alpha =1\) for ELU.}}{6}{table.2.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces The Lipschitz constants of univariate activation functions.}}{6}{table.2.1}\protected@file@percent }
+\newlabel{tab:univariate_activation_functions}{{2.1}{6}{The Lipschitz constants of univariate activation functions}{table.2.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Linear Functions}{6}{section.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Operator Norms \(||W||\)}{6}{subsection.2.3.1}\protected@file@percent }
 \newlabel{eq:linear_LC}{{2.3.14}{6}{Operator Norms \(||W||\)}{equation.2.3.14}{}}
@@ -73,17 +71,18 @@
 \newlabel{eq:composite_1}{{2.6.27}{15}{Composites of Functions}{equation.2.6.27}{}}
 \newlabel{eq:composite_2}{{2.6.28}{15}{Composites of Functions}{equation.2.6.28}{}}
 \citation{VA-SK}
-\citation{HF}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Lipschitz Constants of Neural Networks}{16}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Rademacher Theorem}{16}{section.3.1}\protected@file@percent }
-\newlabel{theo:Rademacher}{{3.1}{16}{}{theorem.3.1}{}}
+\citation{HF}
 \citation{WR}
+\newlabel{theo:Rademacher}{{3.1}{17}{}{theorem.3.1}{}}
+\newlabel{eq:Rademacher}{{3.1.1}{17}{Rademacher Theorem}{equation.3.1.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Upperbounding the Lipschitz constant : AutoLip}{17}{section.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}An exmaple for univariate case}{18}{subsection.3.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces A computation graph for the function \(f_\omega (x)=\frac  1{1+e^{-2x}}+\left |2x+\omega \qopname  \relax o{cos}x\right |.\)}}{19}{figure.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces A computation graph for the function \(f_\omega (x)=\frac  1{1+e^{-2x}}+\left |2x+\omega \cos x\right |.\)}}{19}{figure.3.1}\protected@file@percent }
 \newlabel{computation_graph_1}{{3.1}{19}{A computation graph for the function \(f_\omega (x)=\frac 1{1+e^{-2x}}+\left |2x+\omega \cos x\right |.\)}{figure.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}AutoLip}{20}{subsection.3.2.2}\protected@file@percent }
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces AutoLip}}{22}{algocf.1}\protected@file@percent }
@@ -97,12 +96,11 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Convolutional Neural Networks}{24}{section.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Convolutional layers}{24}{subsection.3.4.1}\protected@file@percent }
 \newlabel{convolutional_layers}{{3.4.1}{24}{Convolutional layers}{subsection.3.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Power method}{25}{subsection.3.4.2}\protected@file@percent }
-\newlabel{sec:power_method}{{3.4.2}{25}{Power method}{subsection.3.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces A convolutional layer as a matrix multiplication}}{26}{figure.3.4}\protected@file@percent }
-\newlabel{convolution_matrix}{{3.4}{26}{A convolutional layer as a matrix multiplication}{figure.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces A convolutional layer as a matrix multiplication}}{25}{figure.3.4}\protected@file@percent }
+\newlabel{convolution_matrix}{{3.4}{25}{A convolutional layer as a matrix multiplication}{figure.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Power method}{26}{subsection.3.4.2}\protected@file@percent }
+\newlabel{sec:power_method}{{3.4.2}{26}{Power method}{subsection.3.4.2}{}}
 \newlabel{lemm:Rayleigh}{{3.2}{27}{}{theorem.3.2}{}}
-\newlabel{convolutional_layers}{{3.4.2}{27}{Power method}{theorem.3.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Max pooling layers}{27}{subsection.3.4.3}\protected@file@percent }
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Approximating \(||F||\) using the power method}}{28}{algocf.2}\protected@file@percent }
 \newlabel{alg:2}{{2}{28}{Power method}{algocf.2}{}}
