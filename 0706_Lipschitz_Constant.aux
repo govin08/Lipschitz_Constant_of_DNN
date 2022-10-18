@@ -2,10 +2,13 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -25,6 +28,7 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch2}{{2}{2}{Lipschitz Constants of Functions Between Euclidean Spaces}{chapter.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Lipschitz Constants}{2}{section.2.1}\protected@file@percent }
 \newlabel{eq:euclidean_norm}{{2.1.1}{2}{Lipschitz Constants}{equation.2.1.1}{}}
 \newlabel{LC}{{2.1}{2}{}{theorem.2.1}{}}
@@ -75,6 +79,7 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch3}{{3}{16}{Lipschitz Constants of Neural Networks}{chapter.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Rademacher Theorem}{16}{section.3.1}\protected@file@percent }
 \citation{HF}
 \citation{WR}
@@ -82,14 +87,15 @@
 \newlabel{eq:Rademacher}{{3.1.1}{17}{Rademacher Theorem}{equation.3.1.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Upperbounding the Lipschitz constant : AutoLip}{17}{section.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}An exmaple for univariate case}{18}{subsection.3.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces A computation graph for the function \(f_\omega (x)=\frac  1{1+e^{-2x}}+\left |2x+\omega \cos x\right |.\)}}{19}{figure.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces A computation graph for the function \(f_\omega (x)=\frac  1{1+e^{-2x}}+\left |2x+\omega \qopname  \relax o{cos}x\right |.\)}}{19}{figure.3.1}\protected@file@percent }
 \newlabel{computation_graph_1}{{3.1}{19}{A computation graph for the function \(f_\omega (x)=\frac 1{1+e^{-2x}}+\left |2x+\omega \cos x\right |.\)}{figure.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}AutoLip}{20}{subsection.3.2.2}\protected@file@percent }
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces AutoLip}}{22}{algocf.1}\protected@file@percent }
+\citation{VA-SK}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces A single layer perceptron of input dimension 3 and output dimension 4 with weight matrix \(W\) and the bias \(b\).}}{22}{figure.3.2}\protected@file@percent }
+\newlabel{SLP}{{3.2}{22}{A single layer perceptron of input dimension 3 and output dimension 4 with weight matrix \(W\) and the bias \(b\)}{figure.3.2}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces AutoLip, \cite  {VA-SK}}}{22}{algocf.1}\protected@file@percent }
 \newlabel{alg:1}{{1}{22}{AutoLip}{algocf.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Multi-Layer Perceptrons}{22}{section.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces A single layer perceptron of input dimension 3 and output dimension 4 with weight matrix \(W\) and the bias \(b\).}}{23}{figure.3.2}\protected@file@percent }
-\newlabel{SLP}{{3.2}{23}{A single layer perceptron of input dimension 3 and output dimension 4 with weight matrix \(W\) and the bias \(b\)}{figure.3.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces A computation graph for the function the single layer perceptron}}{23}{figure.3.3}\protected@file@percent }
 \newlabel{computation_graph_2}{{3.3}{23}{A computation graph for the function the single layer perceptron}{figure.3.3}{}}
 \citation{SK-ZA}
@@ -100,6 +106,7 @@
 \newlabel{convolution_matrix}{{3.4}{25}{A convolutional layer as a matrix multiplication}{figure.3.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Power method}{26}{subsection.3.4.2}\protected@file@percent }
 \newlabel{sec:power_method}{{3.4.2}{26}{Power method}{subsection.3.4.2}{}}
+\citation{LR}
 \newlabel{lemm:Rayleigh}{{3.2}{27}{}{theorem.3.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Max pooling layers}{27}{subsection.3.4.3}\protected@file@percent }
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Approximating \(||F||\) using the power method}}{28}{algocf.2}\protected@file@percent }
@@ -126,5 +133,7 @@
 \bibcite{BG-HM}{{14}{}{{}}{{}}}
 \bibcite{CN-WD}{{15}{}{{}}{{}}}
 \bibcite{SK-ZA}{{16}{}{{}}{{}}}
+\bibcite{SS-FS}{{17}{}{{}}{{}}}
+\bibcite{LR}{{18}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\gdef \@abspage@last{35}
+\gdef \@abspage@last{36}

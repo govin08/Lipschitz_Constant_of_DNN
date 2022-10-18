@@ -70,7 +70,16 @@
 
 \newpage
 \begin{abstract}
-
+Neural networks can be thought of as a function between euclidean spaces.
+The \emph{Lipschitz constant} of the neural nework measures how sensitive the output is, with respect to the input.
+Therefore, we can use the constant to access the robustness of the machine learning architecture, as in the Wasserstein GAN.
+%The Lipschitz constant of the simplest function, the linear map, corresponds to the operator norm or the matrix.
+%To study the Lipschitz constant of the simplest function or the linear map, one should encounter the concept of the operator norm of a matrix, or the absolute value of the dominating eigenvalue of the matrix.
+The Lipschitz constant of the simplest function, or the linear map, is the \emph{operator norm} of the matrix which is the absolute value of the dominating eigenvalue.
+For a differentiable function in general, the Lipscthiz constant is related to the operator norm of the Jacobian matrix.
+However, evaluating the exact value of the constant is difficult or often impossible.
+Rather, we can think of a systematic way called the \emph{AutoLip} to find an upper bound for the Lipschitz constant.
+We can apply this algorithm to multilayer perceptrons and convolutional neural networks, where the power method is introduced to approximate the operator norms of big matrices.
 \end{abstract}
 \newpage
 \setcounter{page}{1} \setcounter{section}{0}
@@ -83,16 +92,16 @@ Deep neural networks have made many advances including computer vision, language
 Still, one of the difficulties in applying deep learning algorithms to reality is that the algorithm often lacks its robustness.
 As an example, Szegedy et al. have found that a small perturbation of an input for true image may cause the classifier to misclasssify the image as false image \cite{CS-WZ}.
 
-To overcome the instabiltiy of training and to enhance robustness of generating models such as GANs, M. Arjovsky et al. proposed Wasserstein distance between distributions and restrict their attention to 1-Lipschitz function to the critic \cite{MA-SC}, \cite{GI-AF}.
+To overcome the instabiltiy of training and to enhance robustness of generating models such as GANs, M. Arjovsky et al. proposed Wasserstein distance between distributions and restrict their attention to 1-Lipschitz critic(discriminator) \cite{MA-SC}, \cite{GI-AF}.
 As this example suggest, the Lipschitz constant can be a good metric to access the robustness of the algorithm.
 
-The Lipschitz constant of a function measures the sensitiveness or the robustness, or the rate of changes of the function.
-In chapter 2, we define the optimal Lipschitz constant of the functions between euclidean spaces and explore the computation of this optimal constant for various functions including linear maps, affine maps and compositions of functions.
+The Lipschitz constant \(\lip(f)\) of a function \(f\) measures the sensitiveness or the rate of changes of the function.
+In Chapter \ref{ch2}, we define the Lipschitz constant of the functions between euclidean spaces and explore the computation of this optimal constant for various functions including linear maps, affine maps and compositions of functions.
 However, if the function becomes more complex, it is difficult or almost impossible to calculate the optimal constant.
-So, we propose the algorithms to estimate the constant, using the Rademacher's theorem.
+Instead of finding the exact value, we propose algorithms to estimate the constant in Chapter \ref{ch3}.
 
 %%%
-\chapter{Lipschitz Constants of Functions Between Euclidean Spaces}
+\chapter{Lipschitz Constants of Functions Between Euclidean Spaces}\label{ch2}
 
 %%
 \section{Lipschitz Constants}
@@ -214,10 +223,10 @@ The \text{ReLU} function
 \lip(\text{ReLU})=1.
 \end{equation}
 %Although not being differentiable, the case of rectified linear unit \(\text{ReLu}(x)=\max\{0,x\}\) can also be easily evaluated to be \(1\).
-Here is a list of the optimal Lipschitz constants of univariate activation functions, frequently used in machine learning and deep learning. (\textbf{Table} \ref{tab:univariate_activation_functions})
+Here is a list of the optimal Lipschitz constants of univariate activation functions, frequently used in machine learning and deep learning. (Table \ref{tab:univariate_activation_functions})
  
 \renewcommand\arraystretch{1.5}
-\begin{table}[ht]
+\begin{table}[t]
 \centering
 \caption{The Lipschitz constants of univariate activation functions.}
 \label{tab:univariate_activation_functions}
@@ -562,7 +571,7 @@ is Lipschitz constinuous and
 \end{equation}
 
 %%%
-\chapter{Lipschitz Constants of Neural Networks}
+\chapter{Lipschitz Constants of Neural Networks}\label{ch3}
 
 Now we turn to the problem of finding the optimal Lischitz constant of various architectures frequently appearing in machine learning and deep learning.
 %In this chapter, we use the term "Lipschitz constant of a function" to stand for the optimal Lipschitz constant of a function.
@@ -628,7 +637,7 @@ Consider, for example, a univariate function \(f_\omega\) with a parameter \(\om
 \[f_\omega(x) = \frac1{1+e^{-x}}+\left|2x+\omega\cos x\right|.\]
 In order to construct a systematic way to estimate the constant and to make use of automatic differentiation in implementing the backpropagation by Tensorflow or Pytorch, we think of a computation graph for \(f_\omega\). (Figure \ref{computation_graph_1})
 
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{computation_graph_1}
 \caption{A computation graph for the function \(f_\omega(x)=\frac1{1+e^{-2x}}+\left|2x+\omega\cos x\right|.\)}
@@ -737,8 +746,8 @@ and that
 \sup\left|\left|\frac{\partial\theta_k}{\partial\theta_i}\right|\right|\cdot L_i.
 \end{align*}
 Let \(L_k\) be the right hand side of the above inequality and proceed for \(k+1\).
-After \(K\) iterations, we have an upper bound \(L_K\) of the lipschitz constant for \(\theta_K=f(\boldsymbol x)\).
-(\textbf{Algorithm} \ref{alg:1})
+After \(K\) iterations, an upper bound \(L_K\) of the lipschitz constant for \(\theta_K=f(\boldsymbol x)\) is obtained.
+(Algorithm \ref{alg:1})
 
 \begin{algorithm}
 \KwData{the function \(f=g_K\circ\cdots\circ g_0\),\\ where \(\theta_k=(g_k\circ\cdots\circ g_0)(\boldsymbol x)\) for \(0\le k\le K\)}
@@ -750,7 +759,7 @@ After \(K\) iterations, we have an upper bound \(L_K\) of the lipschitz constant
 \(k\gets k+1\)\;
 }
 \(L\gets L_K\)
-\caption{AutoLip}
+\caption{AutoLip, \cite{VA-SK}}
 \label{alg:1}
 \end{algorithm}
 
@@ -758,47 +767,44 @@ After \(K\) iterations, we have an upper bound \(L_K\) of the lipschitz constant
 %%
 \section{Multi-Layer Perceptrons}
 Consider a single layer perceptron (Figure \ref{SLP}).
-Denote the single layer perceptron by \(f_\omega:\mathbb R^3\to\mathbb R^4\), which is defined as
-\[f_\omega(\bx)=\text{ReLU}(W\bx+b),\]
-where \(\omega\) stands for the set of parameters : \(\omega=(W,b)\).
-With the computation graph illustrated in Figure \ref{computation_graph_2}, we have
-
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
 \includegraphics[width=.4\textwidth]{SLP}
 \caption{A single layer perceptron of input dimension 3 and output dimension 4 with weight matrix \(W\) and the bias \(b\).}
 \label{SLP}
 \end{figure}
-
-\begin{figure}[h]
+Denote the single layer perceptron by \(f_\omega:\mathbb R^3\to\mathbb R^4\), which is defined as
+\[f_\omega(\bx)=\text{ReLU}(W\bx+b),\]
+where \(\omega\) stands for the set of parameters : \(\omega=(W,b)\).
+With the computation graph illustrated in Figure \ref{computation_graph_2}, we have
+\begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{computation_graph_2}
 \caption{A computation graph for the function the single layer perceptron}
 \label{computation_graph_2}
 \end{figure}
-
 \begin{align*}
 k=0;\:\: L_0&=1\\
 k=1;\:\: L_1&=\sup\norm{\frac{\partial\theta_1}{\partial\theta_0}}\times L_0=0\times1=0\\
 k=2;\:\: L_2&
 =\sup\norm{\frac{\partial\theta_2}{\partial\theta_0}}\times L_0
-+\sup\norm{\frac{\partial\theta_2}{\partial\theta_1}}\times L_1\\
-&=||W||\times1+||\bx||\times0=||W||\\
++\sup\norm{\frac{\partial\theta_2}{\partial\theta_1}}\times L_1=%||W||\times1+||\bx||\times0
+||W||\\
 k=3;\:\: L_3&
 =\sup\norm{\frac{\partial\theta_3}{\partial\theta_0}}\times L_0
 +\sup\norm{\frac{\partial\theta_3}{\partial\theta_1}}\times L_1
 +\sup\norm{\frac{\partial\theta_3}{\partial\theta_2}}\times L_2=0\\
 k=4;\:\: L_4&
 =\sup\norm{\frac{\partial\theta_4}{\partial\theta_0}}\times L_0
-+\sup\norm{\frac{\partial\theta_4}{\partial\theta_1}}\times L_1
-+\sup\norm{\frac{\partial\theta_4}{\partial\theta_2}}\times L_2
++\sup\norm{\frac{\partial\theta_4}{\partial\theta_1}}\times L_1\\
+&+\sup\norm{\frac{\partial\theta_4}{\partial\theta_2}}\times L_2
 +\sup\norm{\frac{\partial\theta_4}{\partial\theta_3}}\times L_3\\
 &=0\times1+0\times0+1\times||W||+1\times0=||W||\\
 k=5;\:\: L_5&
 =\sup\norm{\frac{\partial\theta_5}{\partial\theta_0}}\times L_0
 +\sup\norm{\frac{\partial\theta_5}{\partial\theta_1}}\times L_1
-+\sup\norm{\frac{\partial\theta_5}{\partial\theta_2}}\times L_2
-+\sup\norm{\frac{\partial\theta_5}{\partial\theta_3}}\times L_3
++\sup\norm{\frac{\partial\theta_5}{\partial\theta_2}}\times L_2\\
+&+\sup\norm{\frac{\partial\theta_5}{\partial\theta_3}}\times L_3
 +\sup\norm{\frac{\partial\theta_5}{\partial\theta_4}}\times L_4\\
 &=0\times1+0\times0+0\times||W||+0\times0+1\times||W||=||W||.
 \end{align*}
@@ -829,9 +835,16 @@ Instead of viewing \(X\) and \(Y\) as matrices(e.g. \(X=[x_{ij}]_{5\times 5}\), 
 Y=\begin{bmatrix}y_{11}\\y_{12}\\\vdots\\y_{33}\end{bmatrix}.\]
 Then, we can think of the convolutional layer as left multiplication of a matrix \(F\) (Figure \ref{convolution_matrix}).
 
-%The matrix \(F\) in general, is a sparse matrix which is wide ; the number of columns are far larger than the number of rows.
-The Lipschitz constant for the convolution layer is, thus, the operator norm of the matrix \(F\) and we can use the Theorem \ref{theo:evaluation_for_rectangular_matrices}.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{convolution_matrix}
+\caption{A convolutional layer as a matrix multiplication}
+\label{convolution_matrix}
+\end{figure}
 
+%The matrix \(F\) in general, is a sparse matrix which is wide ; the number of columns are far larger than the number of rows.
+The Lipschitz constant for the convolution layer is, thus, the operator norm of the matrix \(F\).
+% and we can use the Theorem \ref{theo:evaluation_for_rectangular_matrices}.
 %Although \(F\) is big and wide, the computation of \(||F||\) is not that hard.
 %Let \(f_i\) be the vector of dimension \(3\) defined by
 %\(f_i=[f_{i1}\:\:f_{i2}\:\:f_{i3}]^T\)
@@ -843,15 +856,7 @@ The Lipschitz constant for the convolution layer is, thus, the operator norm of 
 %f_3&=[f_{31}\:\:f_{32}\:\:f_{33}]^T
 %\end{align*}
 %The \(9\times9\) square matrix \(FF^T\) is of the form
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{convolution_matrix}
-\caption{A convolutional layer as a matrix multiplication}
-\label{convolution_matrix}
-\end{figure}
-
-But, it is complicated and time consuming to evaluate the Lipschitz constant directly.
+But, it is complicated and time consuming to evaluate the value directly.
 Instead of applying the Theorem \ref{theo:evaluation_for_rectangular_matrices} and evaluate \(||F||=\sqrt{||F^TF||}\) rigorously, we can use numerical method called \emph{power method}.
 
 %%%
@@ -862,42 +867,42 @@ This is usually the case, since the probability that the characteristic equation
 Then, we have not only the distinct eigenvalues \(\lambda_1\), \(\cdots\), \(\lambda_n\), but also the linearly independent eigenvectors \(v_1\), \(\cdots\), \(v_n\).
 Without loss of generality, let \(|\lambda_1|\ge|\lambda_2|\ge\cdots\ge|\lambda_n|\), so that \(\lambda_1\) is the \emph{dominating eigenvalue} ; \(|\lambda_1|=\max_i|\lambda_i|\).
 
-Let \(x\) be any nonzero vector in \(\mathbb R^n\).
+Let \(\bx\) be any nonzero vector in \(\mathbb R^n\).
 There exist \(c_1\), \(\cdots\), \(c_n\) such that
-\[x=c_1v_1+\cdots+c_nv_n.\]
+\[\bx=c_1\bv_1+\cdots+c_n\bv_n.\]
 Then,
 \begin{align*}
-Ax
-&=A(c_1v_1+\cdots+c_nv_n)\\
-&=c_1Av_1+\cdots+c_nAv_n\\
-&=c_1\lambda_1v_1+\cdots+c_n\lambda_nv_n.
+A\bx
+&=A(c_1\bv_1+\cdots+c_n\bv_n)\\
+&=c_1A\bv_1+\cdots+c_nA\bv_n\\
+&=c_1\lambda_1\bv_1+\cdots+c_n\lambda_n\bv_n.
 \end{align*}
 Moreover,
 \begin{align*}
-A^2x
-&=A(c_1\lambda_1v_1+\cdots+c_n\lambda_nv_n)\\
-&=c_1\lambda_1Av_1+\cdots+c_n\lambda_nAv_n\\
-&=c_1{\lambda_1}^2v_1+\cdots+c_n{\lambda_n}^2v_n.
+A^2\bx
+&=A(c_1\lambda_1\bv_1+\cdots+c_n\lambda_n\bv_n)\\
+&=c_1\lambda_1A\bv_1+\cdots+c_n\lambda_nA\bv_n\\
+&=c_1{\lambda_1}^2\bv_1+\cdots+c_n{\lambda_n}^2\bv_n.
 \end{align*}
 In the similar fashion, we have, for any positive integer \(k\),
-\[A^kx=c_1{\lambda_1}^kv_1+\cdots+c_n{\lambda_n}^kv_n.\]
-Among \(n\) terms \(c_1{\lambda_1}^kv_1\), \(\cdots\), \(c_n{\lambda_n}^kv_n\), the first term is the dominating term, since
-\[A^kx={\lambda_1}^k\left(c_1v_1+c_2\left(\frac{\lambda_2}{\lambda_1}\right)^kv_2+\cdots+c_n\left(\frac{\lambda_n}{\lambda_1}\right)^kv_n\right)\]
+\[A^k\bx=c_1{\lambda_1}^k\bv_1+\cdots+c_n{\lambda_n}^k\bv_n.\]
+Among \(n\) terms \(c_1{\lambda_1}^k\bv_1\), \(\cdots\), \(c_n{\lambda_n}^k\bv_n\), the first term is the dominating term, since
+\[A^k\bx={\lambda_1}^k\left(c_1\bv_1+c_2\left(\frac{\lambda_2}{\lambda_1}\right)^k\bv_2+\cdots+c_n\left(\frac{\lambda_n}{\lambda_1}\right)^k\bv_n\right)\]
 and
 \(\left(\frac{\lambda_i}{\lambda_1}\right)^k\to0\) exponentially as \(k\to\infty\), for \(i=2,\cdots,n\).
 In short, for sufficient large integer \(k\), we have
-\[A^kx\approx c_1{\lambda_1}^kv_1.\]
-Furthermore, we can approximately think of \(A^kx\) as the eigenvector, corresponding eigenvalue of which is the dominating one.
+\[A^k\bx\approx c_1{\lambda_1}^k\bv_1.\]
+Furthermore, we can approximately think of \(A^k\bx\) as the eigenvector, corresponding eigenvalue of which is the dominating one.
 Now, we can use the following lemma, stating that if we are given an eigenvector, we can evaluate the the corresponding eigenvalue.
-
 \begin{lemma}\label{lemm:Rayleigh}
-\textbf{(Rayleigh Quotient)}
-If \(x\) is an eigenvector of a matrix \(A\), then its corresponding eigenvalue is given by
-\[\lambda = \frac{\langle Ax,x\rangle}{\langle x,x\rangle}.\]
+\textbf{(Rayleigh Quotient \cite{LR})}
+If \(\bx\) is an eigenvector of a matrix \(A\), then its corresponding eigenvalue is given by
+\[\lambda = \frac{\langle A\bx,\bx\rangle}{\langle \bx,\bx\rangle}=\frac{\bx^TA^T\bx}{\bx^T\bx}.\]
 \end{lemma}
-Here, \(\langle\cdot,\cdot\rangle\) is the inner product as defined in Subsection \ref{sec:evaluation_for_rectangular_matrices}.
 
-For rectangular matrix \(f\), for example, as in Subsection \ref{convolutional_layers}, approximating algorithm for \(||F||\) is illustrated in \textbf{Algorithm} \ref{alg:2}.
+Here, \(\langle\cdot,\cdot\rangle\) is the inner product as defined in Subsection \ref{sec:evaluation_for_rectangular_matrices}.
+The proof is straightforward if we replace \(A\bx\) by \(\lambda\bx\).
+For rectangular matrix \(F\) as in Subsection \ref{convolutional_layers}, approximating algorithm for \(||F||\) is illustrated in Algorithm \ref{alg:2}.
 
 %Therefore, the dominating eigenvalue \(\tilde\lambda\) of a square matrix \(A\) or the operator norm of \(A\) can be approximated by
 %\[\tilde\lambda\approx\frac{\langle A^{k+1}x,A^kx\rangle}{\langle A^kx,A^kx\rangle}.\]
@@ -909,7 +914,7 @@ For rectangular matrix \(f\), for example, as in Subsection \ref{convolutional_l
 Set an integer \(k\) sufficiently large enough\;
 Set a nonzero vector \(x\in\mathbb R^m\)\;
 \(x_k\gets A^kx\)\;
-\(\tilde\lambda\gets\frac{{x_k}^TAx_k}{{x_k}^Tx_k}\)\;
+\(\tilde\lambda\gets\frac{{x_k}^TA^Tx_k}{{x_k}^Tx_k}\)\;
 \(||F||\gets\sqrt{\tilde\lambda}\)
 \caption{Approximating \(||F||\) using the power method}
 \label{alg:2}
@@ -918,15 +923,15 @@ Set a nonzero vector \(x\in\mathbb R^m\)\;
 %%%
 \subsection{Max pooling layers}
 
-The Lipschitz constant of the max pooling component is 1, by the following obvious reason.
+The Lipschitz constant of the max pooling layer is 1, by the following obvious reason.
 
 Consider a usual \(2\times 2\) maxpooling, applied to 2d-array \(X\).
 Suppose that \(X\) consists \(4N\) numbers \(x_1\), \(x_2\), \(x_3\), \(x_4\), \(\cdots\), \(x_{4N-3}\), \(x_{4N-2}\), \(x_{4N-1}\), \(x_{4N}\) and denote \(X\) as a \(4N\)-dimensional vector by
 \[X=[x_1\:\:\:x_2\:\:\:x_3\:\:\:x_4\:\:\:\cdots\:\:\:x_{4N-3}\:\:\:x_{4N-2}\:\:\:x_{4N-1}\:\:\:x_{4N}]^T.\]
-Let \(x^{(1)}\), \(\cdots\), \(x^{(N)}\) be four dimensional vectors defined by
-\[x^{(1)}=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix},\cdots,x^{(N)}=\begin{bmatrix}x_{4N-3}\\x_{4N-2}\\x_{4N-1}\\x_{4N}\end{bmatrix}\]
+Let \(\bx^{(1)}\), \(\cdots\), \(\bx^{(N)}\) be four-dimensional-vectors defined by
+\[\bx^{(1)}=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix},\quad\cdots,\quad \bx^{(N)}=\begin{bmatrix}x_{4N-3}\\x_{4N-2}\\x_{4N-1}\\x_{4N}\end{bmatrix}\]
 and write
-\[X=\begin{bmatrix}x^{(1)}\\\vdots\\x^{(N)}\end{bmatrix}.\]
+\[X=\begin{bmatrix}\bx^{(1)}\\\vdots\\\bx^{(N)}\end{bmatrix}.\]
 %by abusing notation.
 
 \begin{lemma}\label{lemm:maxs_1_lipschitz}
@@ -944,13 +949,13 @@ and \(\lip(\max)=1\).
 \end{proof}
 
 Now, we are ready to evaluate \(\lip(\text{MaxPool})\).
-The function \[\text{MaxPool}:\mathbb R^{4N}\to\mathbb R^N\] is defined by
-\[\text{MaxPool}(X)=\begin{bmatrix}\max \left(x^{(1)}\right)\\\vdots\\\max \left(x^{(N)}\right)\end{bmatrix}.\]
+The function \[\text{MaxPool}:\mathbb R^{4N}\to\mathbb R^N\] can be expressed as
+\[\text{MaxPool}(X)=\begin{bmatrix}\max \left(\bx^{(1)}\right)\\\vdots\\\max \left(\bx^{(N)}\right)\end{bmatrix}.\]
 Thus,
 \begin{align*}
 {\left|\left|f(X)-f(Y)\right|\right|_2}^2
-&=\sum_{n=1}^N\left(\max\left(x^{(n)}\right)-\max\left(y^{(n)}\right)\right)^2\\
-&\le\sum_{n=1}^N\left(\max\left(x^{(n)}-y^{(n)}\right)\right)^2\\
+&=\sum_{n=1}^N\left(\max\left(\bx^{(n)}\right)-\max\left(\by^{(n)}\right)\right)^2\\
+&\le\sum_{n=1}^N\left(\max\left(\bx^{(n)}-\by^{(n)}\right)\right)^2\\
 &{\le\left|\left|\text{MaxPool}(X-Y)\right|\right|_2}^2.
 \end{align*}
 Therefore,
@@ -961,14 +966,14 @@ Therefore,
 %%%
 \chapter{Conclusion}
 For a function between metric spaces, the Lipschitz constant measures the rate of change of the function.
-If we conceive a neural network as a function between Euclidean space, the Lipschitz constant of the neural network tells us how sensitive the output is, relative to the input.
+If we conceive a neural network as a function between Euclidean spaces, the Lipschitz constant of the neural network tells us how sensitive the output is, with respect to the input.
 One can relate the Lipschitz constant to robustness.
 But the Lipschitz constant is not the same as the robustness, in that it measures the sensitivity when the parameters are fixed.
 
 The Lipscthiz constant for relatively simple functions such as activation functions, linear functions and affine functions can be obtained either by simple calculation or the notion of matrix norm.
 But the actual computation for the neural networks are not that easy.
 Although, we can express the lipschitz constant of \emph{any} locally Lipschitz functions by Rademacher Theorem, it is impossible (NP-hard) to evaluate the optimal constant even for a simple architecture such as 2-layer perceptron.
-Rather, we can think of several numerical way to find an upper bound for the optimal constant either by an algorithm called AutoLip or by the power method.
+Rather, we can think of several numerical way to find an upper bound for the constant by an algorithm called \emph{AutoLip} or to use an approximation algorithm called the power method.
 
 \newpage
 
@@ -993,6 +998,9 @@ THEOREM
 \bibitem {CN-WD} Carlini, N., \& Wagner, D. (2017, May). Towards evaluating the robustness of neural networks. In 2017 \emph{ieee symposium on security and privacy (sp)} (pp. 39-57). Ieee.
 \bibitem {SK-ZA} Simonyan, K., \& Zisserman, A. (2014). Very deep convolutional networks for large-scale image recognition. arXiv preprint arXiv:1409.1556.
 
+\bibitem {SS-FS} Singla, S., \& Feizi, S. (2019). Robustness certificates against adversarial examples for relu networks. arXiv preprint arXiv:1902.01235.
+
+\bibitem {LR} Larson, R. (2016). \emph{Elementary linear algebra}. Cengage Learning.
 \end{thebibliography}
 
 %\addcontentsline{toc}{chapter}{Bibliography}
