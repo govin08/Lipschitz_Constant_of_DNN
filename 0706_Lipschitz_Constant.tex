@@ -70,7 +70,13 @@
 
 \newpage
 \begin{abstract}
-
+In machine learning and Deep learning, making an algorithm stable or robust is just as important as making them perform well.
+One of the indicator that measures the robustness of an algorithm is the Lipschitz constant.
+This paper discusses various ways to calculate the Lipschitz constant of basic machine learning algorithms.
+One of the  main part of the perceptron and MLP is the linear function, whose Lipschitz constant coincide with the operator norm of the corresponding matrix.
+Unlike the linear function, evaluating the optimal Lipschitz constant of many algorithms is difficult or impossible even for the two layered MLP.
+Instead of calculating the exact constant, there is a systematic way called \emph{AutoLip} to find an upper bound for the constant and we apply it to MLP and CNN.
+For example, the convolution layer can be thought of as a matrix multiplication by a long matrix and it may require several tools to make it simple.
 \end{abstract}
 \newpage
 \setcounter{page}{1} \setcounter{section}{0}
@@ -89,7 +95,7 @@ As this example suggest, the Lipschitz constant can be a good metric to access t
 The Lipschitz constant of a function measures the sensitiveness or the robustness, or the rate of changes of the function.
 In chapter 2, we define the optimal Lipschitz constant of the functions between euclidean spaces and explore the computation of this optimal constant for various functions including linear maps, affine maps and compositions of functions.
 However, if the function becomes more complex, it is difficult or almost impossible to calculate the optimal constant.
-So, we propose the algorithms to estimate the constant, using the Rademacher's theorem.
+So, we propose algorithms to estimate the constant, using the Rademacher's theorem.
 
 %%%
 \chapter{Lipschitz Constants of Functions Between Euclidean Spaces}
@@ -113,7 +119,7 @@ The infimum of \(c\) which satisfies \eqref{eq:LC1} is called the \emph{Lipschit
 \end{definition}
 
 % The equality of inf-def and sup-def
-This definition can also be extended to functions from a metric space to another metric space if we replace the norms by the distances.
+This definition can also be extended to functions from a metric space to another metric space if we substitute the norms with the distances.
 It is useful to know that there is an equivalent definition ;
 \begin{equation}\label{eq:LC2}
 \lip(f)=\sup_{\bx\neq\by}\frac{||f(\bx)-f(\by)||}{||\bx-\by||}
@@ -181,7 +187,7 @@ If \(f\) is diffrentiable everywhere in the domain, the mean value theorem guara
 |f'(x)|\le c
 \end{equation}
 for every \(x\in\mathbb R\).
-Moreover, \(\lip(f)\) is the least nonnegative number \(c\) satisfying the condition \eqref{eq:LC_univariate1} for all \(x\) and we can express \(\lip f\) in its exact form ; 
+Moreover, \(\lip(f)\) is the least nonnegative number \(c\) satisfying the condition \eqref{eq:LC_univariate1} for all \(x\) and we can express \(\lip(f)\) in its exact form ; 
 \begin{equation}\label{eq:LC_univariate2}
 \lip (f) = \sup_{x\in\mathbb R}|f'(x)|
 \end{equation}
@@ -270,7 +276,7 @@ If we modify the second definition of \eqref{eq:linear_equivalent_def} to
 ||W||=\sup\left\{||W\bx||:||\bx||=1\right\},
 \end{equation}
 we can easily verify that the supremum is actually the maximum in this case.
-Because the set \(\{\bx:||\bx||=1\}\) is a compact subset of \(\mathbb R^m\) and the map \(\bx\mapsto||W\bx||\) is continuous, the set in \eqref{eq:linear_equivalent_def_2} has its maximum.
+Because the set \(\{\bx:||\bx||=1\}\) is a compact subset of \(\mathbb R^n\) and the map \(\bx\mapsto||W\bx||\) is continuous, the set in \eqref{eq:linear_equivalent_def_2} has its maximum.
 
 The operator norm is indeed a norm of a vector space ;
 \begin{proposition}\label{prop:operator_norm_1}
@@ -287,7 +293,7 @@ Thus, the set \(\mathcal M_{m,n}(\mathbb R)\) of all \(m\) by \(n\) real matrice
 \end{proposition}
 For (a), that \(||W||\ge0\) is obvious.
 If \(||W||=0\), then \(||W\bx||\le 0||\bx||=0\) for all \(\bx\in\mathbb R^n\).
-It follows that \(W\bx=0\) for all \(\bx\in\mathbb R^n\), by the definition of vector norm, for which \(W=0\)
+It follows that \(W\bx=0\) for all \(\bx\in\mathbb R^n\), by the definition of vector norm, thus \(W=0\).
 Suppose, on the other hand, that \(W=0\). Then \(W\bx=0\) for all \(x\in\mathbb R^n\).
 Thus, \(c=0\) is the minimal value satisfying \eqref{eq:linear_LC}.
 To prove (b), we have
@@ -350,7 +356,7 @@ W\bx
 &=c_1W\bv_1+\cdots+c_nW\bv_n\\
 &=c_1\lambda_1\bv_1+\cdots+c_n\lambda_n\bv_n,
 \end{align*}
-we have
+we have (by the orthogonality of \(v_i\)'s
 \begin{align*}
 ||W\bx||^2
 &=||c_1W\bv_1+\cdots+c_nW\bv_n||^2\\
@@ -381,7 +387,7 @@ W_5=\begin{bmatrix}
 0&1\\0&0
 \end{bmatrix}.\quad
 \end{gather*}
-\(W_1\) is the identity matrix and thus \(||W||=1\).
+\(W_1\) is the identity matrix and thus it must be that \(||W||=1\).
 Indeed, the characteristic polyinomial of \(W_1\) is \((\lambda-1)^2=0\), \(\lambda_1=\lambda_2=1\) and thus the maximum absolute value of them is \(1\).
 The matrix \(W_2\) stretches a given vector \(\bx\) twice in the x-axis direction and three times in the y-axis direction.
 Thus, \(||W_2||\) should be \(3\).
@@ -433,7 +439,7 @@ Then
 \end{theorem}
 
 Note that the norm on the left hand side is the operator norm on \(\mathcal M_{m,n}(\mathbb R)\) and the norm on the right hands side is the operator norm on \(\mathcal M_n(\mathbb R)\).
-Note also that the matrix \(W^TW\) is symmetric in that \((W^TW)^T=W^T(W^T)^T=W^TW\) and we are always able to calculate the norm of \(||W^TW||\) by making use of the lemma \ref{lemm:evaluation_for_square_matrices}.
+Note also that the matrix \(W^TW\) is real symmetric in that \((W^TW)^T=W^T(W^T)^T=W^TW\) and we are always able to calculate the norm of \(||W^TW||\) by making use of the lemma \ref{lemm:evaluation_for_square_matrices}.
 
 Before the proof of \eqref{eq:evaluation_of_operator_norm_for_rectangular_matrix}, we illustrate elementary properties of the operator norm of matrices.
 The euclidean norm \(||\bx||\) of a vector \(\bx\in\mathbb R^n\) in \eqref{eq:euclidean_norm} can also be defined by means of the inner product on \(\mathbb R^n\);
@@ -447,7 +453,7 @@ The inner product \(\langle \bx,\by\rangle=\bx^T\by\) has the following properti
 |\langle\bx,\by\rangle|\le||\bx||\:||\by||.
 \end{gather*}
 
-Now we are ready for the proof of \eqref{eq:evaluation_of_operator_norm_for_rectangular_matrix}.
+Now we are ready to prove \eqref{eq:evaluation_of_operator_norm_for_rectangular_matrix}.
 If \(W=0\), then the equation \eqref{eq:evaluation_of_operator_norm_for_rectangular_matrix} holds trivially.
 Suppose that \(W\neq0\).
 Let \(\bx\in\mathbb R^n\).
@@ -534,7 +540,7 @@ Thus, \(\lip(F)\) is upper bounded by \(L=\lip(f)\) ;
 %%
 \section{Composites of Functions}
 Let \(f:\mathbb R^n\to\mathbb R^m\) and \(g:\mathbb R^m\to\mathbb R^k\) be Lipstchitz continuous functions.
-Then, the composite function \(g\circ f\) is also Lipstchitz continuous and the optimal constant is bounded by the product of those of \(f\) and \(g\) ; 
+Then, the composite function \(g\circ f\) is also Lipstchitz continuous and the optimal constant is upper bounded by the product of those of \(f\) and \(g\) ; 
 \begin{equation}\label{eq:composite_1}
 \lip(g\circ f)\le\lip(f)\lip(g)
 \end{equation}
@@ -594,11 +600,11 @@ As for one-dimensional case, many of the textbooks of analysis covered this issu
 In the process, concepts like absolute continuity, Radon-Nykodym theorem, total variation are involved \cite{WR}.
 
 The second statement, or the optimal Lipschitz constant is the one that we can use for our purpose.
-Note first that, \(D_{\bx}f\) is the Jacobian matrix \(A\) of \(f\) satisfying
+Note first that, \(D_{\bx}(f)\) is the Jacobian matrix \(A\) of \(f\) satisfying
 \[\lim_{\by\to\bx}\frac{||f(\by)-f(\bx)-A(\by-\bx)||}{||\by-\bx||}=0,\]
 and that \(||D_{\bx}(f)||\) is nothing but the operator norm we've defined in the previous chapter.
 
-Note that although the equation \eqref{eq:Rademacher} expresses \(\lip(f)\) explicitly, it doesn't mean that we can actually find the value of \(\lip(f)\).
+Note also that although the equation \eqref{eq:Rademacher} expresses \(\lip(f)\) explicitly, it doesn't mean that we can actually find the value of \(\lip(f)\).
 %Although the supremum or the maximum of a function exists, it is sometimes impossible to find the supremum or the maximum.
 
 %%
@@ -607,18 +613,18 @@ Note that although the equation \eqref{eq:Rademacher} expresses \(\lip(f)\) expl
 Here is an algorithm called \emph{AutoLip} that evaluate an upperbound for the Lipschitz constant.
 The algorithm can be applied to any deterministic neural network (resp. stochastic neural networks or bayesian neural networks) with the computation graph, which is a composite of elementary functions.
 
-The only difficulty in the Rademacher theorem is the expression supremum ; it is not easy or sometimes impossible to evaluate the exact value of the supremum or the maximum of a function.
+The only difficulty in the Rademacher theorem was the expression supremum ; it is not easy or sometimes impossible to evaluate the exact value of the supremum or the maximum of a function.
 But, it is possible, in most case, to find the maximum in the relatively simple function.
 In other words, the supremum for the Jacobian matrix can be calcuated for most elementary functions.
 
-For a function \(f:\mathbb R^n\to\mathbb R^m\), we've used the notation for the jacobian matrix of \(f\) as
+For a function \(f:\mathbb R^n\to\mathbb R^m\), we've used the notation for the Jacobian matrix of \(f\) as
 \[D_{\boldsymbol x}(f)\]
 in the previous section.
 In this section, we occasionally use
 \[\frac{\partial\boldsymbol y}{\partial\boldsymbol x}\]
 to represent the same matrix, provided that \(\boldsymbol y=f(\boldsymbol x)\).
 In this context, \(\left|\left|\frac{\partial\boldsymbol y}{\partial\boldsymbol x}\right|\right|\) represents the operator norm for the matrix.
-Furthermore, if \(y\) is a function of a univariate variable \(x\), we usually denote the ordinary derivative of \(y\) with respect to \(x\) as \(\frac{dy}{dx}\).
+Furthermore, if \(y\) is a function of a univariate variable \(x\), usual notation for the derivative is \(\frac{dy}{dx}\).
 But, in order to unify the notation, we stick to use the partial derivative notation \(\frac{\partial y}{\partial x}\).
 
 
@@ -897,6 +903,7 @@ If \(x\) is an eigenvector of a matrix \(A\), then its corresponding eigenvalue 
 \end{lemma}
 Here, \(\langle\cdot,\cdot\rangle\) is the inner product as defined in Subsection \ref{sec:evaluation_for_rectangular_matrices}.
 
+Therefore, given a square orthogonally diagonalizable matrix $A$, we can approximate the \emph{dominating eigenvector} $x_1$, by computing repeatedly $A^kx$ for any nonzero vector $x$, and also the corresponding \emph{dominating eigenvalue} $\lambda_1$ by the above lemma, which converges to $||A||$.
 For rectangular matrix \(f\), for example, as in Subsection \ref{convolutional_layers}, approximating algorithm for \(||F||\) is illustrated in \textbf{Algorithm} \ref{alg:2}.
 
 %Therefore, the dominating eigenvalue \(\tilde\lambda\) of a square matrix \(A\) or the operator norm of \(A\) can be approximated by
@@ -948,7 +955,7 @@ The function \[\text{MaxPool}:\mathbb R^{4N}\to\mathbb R^N\] is defined by
 \[\text{MaxPool}(X)=\begin{bmatrix}\max \left(x^{(1)}\right)\\\vdots\\\max \left(x^{(N)}\right)\end{bmatrix}.\]
 Thus,
 \begin{align*}
-{\left|\left|f(X)-f(Y)\right|\right|_2}^2
+{\left|\left|\text{MaxPool}(X)-\text{MaxPool}(Y)\right|\right|_2}^2
 &=\sum_{n=1}^N\left(\max\left(x^{(n)}\right)-\max\left(y^{(n)}\right)\right)^2\\
 &\le\sum_{n=1}^N\left(\max\left(x^{(n)}-y^{(n)}\right)\right)^2\\
 &{\le\left|\left|\text{MaxPool}(X-Y)\right|\right|_2}^2.

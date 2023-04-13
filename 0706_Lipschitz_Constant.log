@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.4)  17 OCT 2022 18:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.4)  13 APR 2023 14:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,7 +648,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.74 \end{abstract}
+l.80 \end{abstract}
                     [1]
 Chapter 1.
 
@@ -656,24 +656,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.95 \chapter
-             {Lipschitz Constants of Functions Between Euclidean Spaces}
+l.101 \chapter
+              {Lipschitz Constants of Functions Between Euclidean Spaces}
 [1
 
 ]
 Chapter 2.
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <8> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 101.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 107.
 
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 101.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 107.
 
 [2
 
 ] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
-Overfull \hbox (5.42062pt too wide) in paragraph at lines 513--513
+Overfull \hbox (5.42062pt too wide) in paragraph at lines 519--519
 []\T1/cmr/bx/n/17.28 Elementwise Ap-pli-ca-tion of Non-lin-ear Func-
  []
 
@@ -682,7 +682,7 @@ Chapter 3.
 [16
 
 ]
-Overfull \hbox (4.6307pt too wide) in paragraph at lines 605--605
+Overfull \hbox (4.6307pt too wide) in paragraph at lines 611--611
 []\T1/cmr/bx/n/17.28 Upperbounding the Lip-s-chitz con-stant : Au-
  []
 
@@ -690,14 +690,14 @@ Overfull \hbox (4.6307pt too wide) in paragraph at lines 605--605
 <computation_graph_1.png, id=277, 410.4936pt x 120.9318pt>
 File: computation_graph_1.png Graphic file (type png)
 <use computation_graph_1.png>
-Package pdftex.def Info: computation_graph_1.png  used on input line 633.
+Package pdftex.def Info: computation_graph_1.png  used on input line 639.
 (pdftex.def)             Requested size: 390.0pt x 114.89929pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [18] [19 <./computation_graph_1.png>]
-Overfull \hbox (10.4299pt too wide) in paragraph at lines 679--683
+Overfull \hbox (10.4299pt too wide) in paragraph at lines 685--689
 []\T1/cmr/m/n/12 In sim-i-lar fash-ions, $\OML/cmm/m/it/12 ^^R[] \OT1/cmr/m/n/1
 2 = \OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^R[]; ^^R[]; []  ; ^
 ^R[]\OT1/cmr/m/n/12 ) = []$\T1/cmr/m/n/12 , $\OML/cmm/m/it/12 ^^R[] \OT1/cmr/m/
@@ -709,32 +709,32 @@ n/12 = \OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^R[]; ^^R[]; []
 <SLP.png, id=302, 429.7656pt x 405.1938pt>
 File: SLP.png Graphic file (type png)
 <use SLP.png>
-Package pdftex.def Info: SLP.png  used on input line 768.
+Package pdftex.def Info: SLP.png  used on input line 774.
 (pdftex.def)             Requested size: 155.99762pt x 147.08147pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<computation_graph_2.png, id=303, 328.8285pt x 67.9338pt>
+<computation_graph_2.png, id=303, 338.7054pt x 73.2336pt>
 File: computation_graph_2.png Graphic file (type png)
 <use computation_graph_2.png>
-Package pdftex.def Info: computation_graph_2.png  used on input line 775.
-(pdftex.def)             Requested size: 390.0pt x 80.57477pt.
+Package pdftex.def Info: computation_graph_2.png  used on input line 781.
+(pdftex.def)             Requested size: 390.0pt x 84.32747pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (148.14049pt too wide) detected at line 804
+Overfull \hbox (148.14049pt too wide) detected at line 810
 []
  []
 
 [22]
-Overfull \vbox (46.193pt too high) has occurred while \output is active []
+Overfull \vbox (49.9457pt too high) has occurred while \output is active []
 
 
 [23 <./SLP.png> <./computation_graph_2.png>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
-24.
+30.
 
 (c:/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -742,63 +742,63 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 <convolution_matrix.png, id=337, 707.7642pt x 516.4896pt>
 File: convolution_matrix.png Graphic file (type png)
 <use convolution_matrix.png>
-Package pdftex.def Info: convolution_matrix.png  used on input line 849.
+Package pdftex.def Info: convolution_matrix.png  used on input line 855.
 (pdftex.def)             Requested size: 390.0pt x 284.60605pt.
- [25 <./convolution_matrix.png>] [26] [27] [28] [29]
+ [25 <./convolution_matrix.png>] [26] [27] [28] [29] [30]
 Chapter 4.
-[30
+[31
 
 ]
-Underfull \hbox (badness 1331) in paragraph at lines 984--985
+Underfull \hbox (badness 1331) in paragraph at lines 991--992
 []\T1/cmr/m/n/12 Rudin, Wal-ter. \T1/cmr/m/it/12 Real and Com-plex Anal-y-sis. 
 \T1/cmr/m/n/12 : McGraw-Hill Sci-
  []
 
-[31
+[32
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 987--988
+Underfull \hbox (badness 10000) in paragraph at lines 994--995
 []\T1/cmr/m/n/12 Piotr Ha-jªasz, \T1/cmr/m/it/12 Ge-o-met-ric Anal-y-sis\T1/cmr
 /m/n/12 , []$\T1/cmtt/m/n/12 https : / / sites . pitt . edu /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 987--988
+Underfull \hbox (badness 10000) in paragraph at lines 994--995
 \T1/cmtt/m/n/12 ~hajlasz / Teaching / Math2304Spring2014 / Part % 201 . pdf$[]\
 T1/cmr/m/n/12 , Uni-ver-
  []
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 988--990
+Underfull \hbox (badness 1796) in paragraph at lines 995--997
 []\T1/cmr/m/n/12 James T. Mur-phy, \T1/cmr/m/it/12 An el-e-men-tary proof of Ra
 demacher's the-o-
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 988--990
+Underfull \hbox (badness 1939) in paragraph at lines 995--997
 \T1/cmr/m/it/12 rem\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / intfxdx . co
 m / downloads / rademacher-[]thm-[]2015 . pdf$[]
  []
 
 
-Underfull \hbox (badness 4981) in paragraph at lines 994--995
+Underfull \hbox (badness 4981) in paragraph at lines 1001--1002
 []\T1/cmr/m/n/12 Simonyan, K., & Zis-ser-man, A. (2014). Very deep con-vo-lu-
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 994--995
+Underfull \hbox (badness 1112) in paragraph at lines 1001--1002
 \T1/cmr/m/n/12 tional net-works for large-scale im-age recog-ni-tion. arXiv pre
 print
  []
 
-[32] (./0706_Lipschitz_Constant.aux)
+[33] (./0706_Lipschitz_Constant.aux)
 Package rerunfilecheck Info: File `0706_Lipschitz_Constant.out' has not changed
 .
 (rerunfilecheck)             Checksum: 1ACFA73CEE93645A1CE373C6E2980215;2885.
  ) 
 Here is how much of TeX's memory you used:
- 13116 strings out of 475071
- 204528 string characters out of 5782908
+ 13117 strings out of 475071
+ 204535 string characters out of 5782908
  562388 words of memory out of 5000000
  34128 multiletter control sequences out of 15000+600000
  493925 words of font info for 101 fonts, out of 8000000 for 9000
@@ -827,10 +827,10 @@ type1/public/cm-super/sfbx2488.pfb><c:/texlive/2022/texmf-dist/fonts/type1/publ
 ic/cm-super/sfrm1200.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-supe
 r/sfti1200.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1200
 .pfb>
-Output written on 0706_Lipschitz_Constant.pdf (35 pages, 588467 bytes).
+Output written on 0706_Lipschitz_Constant.pdf (36 pages, 590845 bytes).
 PDF statistics:
- 535 PDF objects out of 1000 (max. 8388607)
- 437 compressed objects within 5 object streams
- 134 named destinations out of 1000 (max. 500000)
+ 539 PDF objects out of 1000 (max. 8388607)
+ 440 compressed objects within 5 object streams
+ 135 named destinations out of 1000 (max. 500000)
  141 words of extra memory for PDF output out of 10000 (max. 10000000)
 
