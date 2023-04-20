@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.4)  20 APR 2023 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.4)  20 APR 2023 14:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -670,36 +670,36 @@ LaTeX Font Info:    Font shape `LUC/nanummj/b/n' in size <10.95> not available
 81.
  [2] (./Lipschitz_constant_of_neural_networks.toc
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 9.
+ 8.
 
 (c:/texlive/2022/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 9.
+ 8.
 
 (c:/texlive/2022/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 9.
+ 8.
 
 (c:/texlive/2022/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 9.
+ 8.
 
 (c:/texlive/2022/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 9.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 9.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 9.
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 9.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 8.
 
 
 (c:/texlive/2022/texmf-dist/tex/latex/jknapltx/ursfs.fd
@@ -723,13 +723,6 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 \openout6 = `Lipschitz_constant_of_neural_networks.lof'.
 
  [6
-
-]
-Overfull \hbox (2.30186pt too wide) in paragraph at lines 239--251
-[][] 
- []
-
-[7
 
 ]
 Chapter 1.
@@ -756,7 +749,7 @@ Chapter 3.
 [18
 
 ] [19]
-<computation_graph_1.png, id=143, 410.4936pt x 120.9318pt>
+<computation_graph_1.png, id=140, 410.4936pt x 120.9318pt>
 File: computation_graph_1.png Graphic file (type png)
 <use computation_graph_1.png>
 Package pdftex.def Info: computation_graph_1.png  used on input line 809.
@@ -766,12 +759,12 @@ Package pdftex.def Info: computation_graph_1.png  used on input line 809.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [20] [21 <./computation_graph_1.png>] [22] [23] [24]
-<SLP.png, id=162, 429.7656pt x 405.1938pt>
+<SLP.png, id=159, 429.7656pt x 405.1938pt>
 File: SLP.png Graphic file (type png)
 <use SLP.png>
 Package pdftex.def Info: SLP.png  used on input line 945.
 (pdftex.def)             Requested size: 154.78062pt x 145.93147pt.
-<computation_graph_2.png, id=163, 338.7054pt x 73.2336pt>
+<computation_graph_2.png, id=160, 338.7054pt x 73.2336pt>
 File: computation_graph_2.png Graphic file (type png)
 <use computation_graph_2.png>
 Package pdftex.def Info: computation_graph_2.png  used on input line 952.
@@ -782,7 +775,7 @@ Overfull \hbox (77.00777pt too wide) detected at line 981
  []
 
 [25 <./SLP.png> <./computation_graph_2.png>] [26]
-<convolution_matrix.png, id=172, 707.7642pt x 516.4896pt>
+<convolution_matrix.png, id=169, 707.7642pt x 516.4896pt>
 File: convolution_matrix.png Graphic file (type png)
 <use convolution_matrix.png>
 Package pdftex.def Info: convolution_matrix.png  used on input line 1026.
@@ -856,11 +849,11 @@ urw/symbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pf
 b><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/202
 2/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on Lipschitz_constant_of_neural_networks.pdf (47 pages, 1964170 
+Output written on Lipschitz_constant_of_neural_networks.pdf (46 pages, 1963765 
 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 261 compressed objects within 3 object streams
+ 420 PDF objects out of 1000 (max. 8388607)
+ 259 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
