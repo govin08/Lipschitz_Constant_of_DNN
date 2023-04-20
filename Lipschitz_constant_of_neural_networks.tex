@@ -1,53 +1,39 @@
-\documentclass[12pt]{report}
-\usepackage{amscd,amsthm,amsmath,amstext,amssymb,mathrsfs}
-\usepackage{epsfig,longtable,verbatim,graphicx,multirow,array,wasysym,esint,hyperref,kotex,color}
-\usepackage[T1]{fontenc}
-\usepackage[sort&compress,square,numbers]{natbib}
+% Beta Version distributed 2022.12.11 
+% Updated 2022.12.19 - Font sizes for the preliminary pages were updated    
+% Special thanks to S.J. Kim
+% LaTex template을 제작해 준 김선중 대학원생에게 깊은 감사의 마음을 전합니다. 
 
-\usepackage{algorithm2e}
-\RestyleAlgo{boxruled}
-\LinesNumbered
-\SetKwInput{KwData}{Input}
-\SetKwInput{KwResult}{Output}
-\SetAlgoLined
+\documentclass[11pt]{report}
+\usepackage{geometry, graphicx, kotex, imakeidx, titlesec, array} % necessary packages
+\usepackage{mathptmx}   
+\usepackage{amsmath, amsthm, amssymb, mathrsfs, multirow, verbatim} % supplementary packages
+\usepackage[nobiblatex]{xurl} % enable linebreak of \url command
+\usepackage{indentfirst} % force indentation at every first paragraph of chapters, sections and subsections
+\usepackage{booktabs} % table tool
+\usepackage{ragged2e}
+\usepackage{setspace}
 
-\numberwithin{figure}{chapter}
-\theoremstyle{plain}
-\newtheorem{theorem}{\protect\theoremname}[chapter]
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{\protect\definitionname}
-\theoremstyle{corollary}
-\newtheorem{corollary}[theorem]{\protect\corollaryname}
-  \theoremstyle{definition}
-  \newtheorem{rem}[theorem]{\protect\remarkname}
-  \theoremstyle{plain}
-  \newtheorem{proposition}[theorem]{\protect\propositionname}
-\theoremstyle{definition}
-\newtheorem{claim}[theorem]{\protect\examplename}
-  \theoremstyle{plain}
-  \newtheorem{lemma}[theorem]{\protect\lemmaname}
-\newtheorem{assumption}[theorem]{Assumption}
+\geometry{paper=b5paper, left=30mm, right=30mm, top=30mm, bottom=30mm} % set the paper size and the margins
+  
+\titleformat{\chapter}{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter.}{20pt}{\huge} % chapter style
+\newtheorem{theorem}{Theorem} % theorem environment
+\newtheorem{definition}{Definition} % definition environment
+% if you need similar environments like lemma, corollary or remark, add them all.
+\newtheorem{lemma}{Lemma} % lemma environment
+\newtheorem{proposition}{Proposition} % proposition environment
+\makeindex % command for making an index chapter
 
-\renewcommand{\labelenumi}{(\roman{enumi})}
+\linespread{1.25} % set the vertical spacing between successive lines (the ratio of the maximal height of a normal font and the base lineskip)
 
-\makeatother
+\renewcommand\arraystretch{1.3} % increase the vertical spacing by 30%
 
-  \providecommand{\lemmaname}{Lemma}
-  \providecommand{\propositionname}{Proposition}
-  \providecommand{\remarkname}{Remark}
-\providecommand{\theoremname}{Theorem}
-\providecommand{\examplename}{Claim}
-\providecommand{\definitionname}{Definition}
-\providecommand{\corollaryname}{Corollary}
+%%% stands for a new chapter or a new page
+%% stands for a new section
+% stands for a comment
 
-\newtheorem{question}{Question}
+% 직접 추가한 코드
+\renewcommand{\theequation}{\thesection.\arabic{equation}} 
 
-\newcommand\aint{-\hspace{-0.44cm}\int}
-\renewcommand{\theequation}{\thesection.\arabic{equation}}
-
-%% preamble part by ksj
-\usepackage[onehalfspacing]{setspace}
-\usepackage{booktabs,enumitem}
 \newcommand\bs[1]{\ensuremath{\boldsymbol{#1}}}
 \newcommand\bx{\ensuremath{\boldsymbol x}}
 \newcommand\by{\ensuremath{\boldsymbol y}}
@@ -57,33 +43,216 @@
 \newcommand\pa[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
 \newcommand\norm[1]{\ensuremath{\left|\left|#1\right|\right|}}
 
+\usepackage{booktabs,enumitem}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\usepackage[linesnumbered,boxed,commentsnumbered]{algorithm2e}
+
+%%%%
 \begin{document}
-\title{\textbf{Lipschitz Constants of Functions of Neural Networks}}
-\author{\\\textbf{Sunjoong Kim}\\}
-\setcounter{tocdepth}{1}
-\date{}
- \maketitle{}
+%%% cover page for the master's thesis
+% For the doctoral degree, delete this page and use the next page
 
-%\newpage
-\tableofcontents
-%\listoffigures
+\newpage   
+\begin{center}
+\pagenumbering{gobble} % Cover page, title page and signature page) should not be numbered.
+{\fontsize{16pt}{16pt}\selectfont Master's Thesis \par}  
+\vspace{3cm} % 3cm spacing
+\huge Lipschitz Constants of Functions of Neural Networks
+\par\vspace{4.5cm} % spacing can be adjusted
+{\fontsize{16pt}{16pt}\selectfont Sunjoong Kim \par}  % put the student's name here
+\vspace{0.5cm}
+{\fontsize{16pt}{16pt}\selectfont College of Science \par}  % You can reduce the character spacing to make the department name on one line. If it takes up more than two lines, please reduce the vertical spacing after the title appropriately.
+\vspace{1.5cm}
+{\fontsize{18pt}{18pt}\selectfont Graduate School \par} 
+\vspace{0.5cm}
+{\fontsize{18pt}{18pt}\selectfont Korea University \par} 
+\vspace{1cm}
+{\fontsize{14pt}{14pt}\selectfont February 2024} 
+\end{center}
 
-\newpage
-\begin{abstract}
-In machine learning and Deep learning, making an algorithm stable or robust is just as important as making them perform well.
-One of the indicator that measures the robustness of an algorithm is the Lipschitz constant.
-This paper discusses various ways to calculate the Lipschitz constant of basic machine learning algorithms.
+%%% title page for master's thesis
+% For the doctoral degree, delete this page and use the next page
+\newpage 
+\begin{center}
+\huge Lipschitz Constants of Neural Networks
+\par\vspace{3.1cm} % spacing can be adjusted
+{\fontsize{16pt}{16pt}\selectfont by \par Sunjoong Kim \par}
+\vspace{0.5cm}
+\rule{.6\textwidth}{0.4pt} %  % Student signature is required above the line
+\par\vspace{0.2cm}
+{\fontsize{16pt}{16pt}\selectfont under the supervision of Professor Seungsang Oh \par}
+\vspace{0.7cm}
+{\fontsize{16pt}{18pt}\selectfont A thesis submitted in partial fulfillment of \par
+ the requirements for the degree of \par Master of Mathematics \par }   
+\vspace{10pt}
+{\fontsize{16pt}{16pt}\selectfont College of Science} % You can reduce the character spacing to make the department name on one line. If it takes up more than two lines, please reduce the vertical spacing after the title appropriately.
+\par\vspace{1.5cm}
+{\fontsize{18pt}{18pt}\selectfont Graduate School \par \vspace{0.5cm}
+ Korea University \par} 
+\vspace{1cm}
+{\fontsize{14pt}{14pt}\selectfont October 2023} % month and year of the submission deadline for the thesis/dissertation examination copy.
+\end{center}
+
+%%% signature page for the master's degree
+% For the doctoral degree, delete this page and use the next page
+
+\newpage 
+\begin{center}
+\vspace{1cm}
+{\fontsize{16pt}{18pt}\selectfont
+The thesis of Sunjoong Kim has been approved \par
+by the thesis committee in partial fulfillment\par
+of the requirements for the degree of \par
+Master of Mathematics \par}  
+\vspace{1cm}
+{\fontsize{14pt}{14pt}\selectfont December 2023} % the year and month of including the date the thesis examination was completed 
+\par\vspace{3cm}
+\rule{.6\textwidth}{0.4pt}\par % committee's signature above the line 
+{\fontsize{16pt}{16pt}\selectfont Committee Chair: Name \par} %%%%% 수정필요 : 교수님 성함?
+\vspace{1cm}
+\rule{.6\textwidth}{0.4pt}\par % committee's signature above the line 
+{\fontsize{16pt}{16pt}\selectfont Committee Member: Name \par}
+\vspace{1cm}
+\rule{.6\textwidth}{0.4pt}\par % committee's signature above the line 
+{\fontsize{16pt}{16pt}\selectfont Committee Member: Name \par}
+\end{center}
+
+%%% English abstract page
+\newpage 
+\pagenumbering{roman} % set the page number as roman type from this page on.
+\newgeometry{paper=b5paper, left=20mm, right=20mm, top=30mm, bottom=30mm} % set the paper size and the margins
+% Margins shall be changed to bottom and top 3 cm, right and left 2 cm from this page forward.
+\addcontentsline{toc}{chapter}{Abstract}
+\begin{center}
+\LARGE Lipschitz Constants of Neural Networks % put the title here
+\par\vspace{20pt}
+
+\normalsize \doublespacing
+by Sunjoong Kim\par % put the student name here
+College of Science\par
+under the supervision of Professor Seungsang Oh % put the professor's name and the department here
+\par\vspace{20pt}
+\large \textbf{Abstract}
+\end{center}
+
+\normalsize
+\justifying % this command available with \usepackage{ragged2e}
+\doublespacing
+
+In machine learning and deep learning, making an algorithm stable or robust is just as important as making it perform well.
+One of the indicator that measures the sensitiveness or the robustness of an algorithm is the Lipschitz constant.
+This paper discusses several ways to calculate the Lipschitz constant of basic machine learning algorithms.
 One of the  main part of the perceptron and MLP is the linear function, whose Lipschitz constant coincide with the operator norm of the corresponding matrix.
-Unlike the linear function, evaluating the optimal Lipschitz constant of many algorithms is difficult or impossible even for the two layered MLP.
+Unlike the linear function, evaluating the optimal Lipschitz constant of many algorithms is difficult or infeasible even for the two layered MLP.
 Instead of calculating the exact constant, there is a systematic way called \emph{AutoLip} to find an upper bound for the constant and we apply it to MLP and CNN.
 For example, the convolution layer can be thought of as a matrix multiplication by a long matrix and it may require several tools to make it simple.
-\end{abstract}
-\newpage
-\setcounter{page}{1} \setcounter{section}{0}
 
+\par\vspace{20pt}
+\textbf{Keywords}: Lipschitz constant, Operator norm, Rademacher's theorem, AutoLip, Power method, Rayleigh quotient
 
-%%%
-\chapter{Introduction}
+%%% Korean abstract page
+
+\newpage 
+\begin{center}
+\LARGE 인공신경망의 립시츠 상수 % put the title here
+\par\vspace{20pt}
+\normalsize 김 선 중\par % put the student name here
+수 학 과\par % put the professor's name and the department here
+지 도 교 수:  오 승 상
+\par\vspace{20pt}
+\addcontentsline{toc}{chapter}{국문초록}
+\large \textbf{국문 초록}
+\end{center}
+
+\normalsize 
+
+머신러닝과 딥러닝에서 안정적인 알고리즘을 만드는 것은 그 알고리즘이 좋은 성능을 내는 것 만큼이나 중요하다.
+알고리즘의 안정성과 관련되어 있는 수학적인 개념 중 하나는 립시츠 상수이다.
+이 논문에서는 기본적인 머신러닝 알고리즘의 립시츠 상수를 계산하는 다양한 방법에 대해 논의한다.
+가장 기본적인 구조인 퍼셉트론은 선형함수의 구조를 가지고 있고, 선형함수의 립시츠 상수는 그 선형함수에 대응되는 행렬에 대한 작용소 놈의 값과 일치한다.
+하지만, 선형함수에서 조금만 알고리즘이 복잡해져도 립시츠 상수를 계산하는 것은 어려워진다.
+예를들어, 레이어가 두 개인 다층퍼셉트론의 경우만 해도 정확하게 립시츠 상수를 계산하는 것이 거의 불가능하다(NP-hard).
+그래서 이 논문에서는, 다양한 머신러닝 알고리즘의 정확한 립시츠 상수값을 계산하는 대신 립시츠 상수의 상한(upper bound)을 계산하는 체계적인 알고리즘(AutoLip)을 소개하고, 이것을 다층퍼셉트론과 합성곱신경망에 적용해본다.
+합성곱 레이어는, 특정한 형태의 행렬의 행렬곱으로 이해할 수 있고, 따라서 작용소 놈을 계산하면 립시츠 상수가 얻어진다.
+이때, 효율적인 계산을 위해 누승법이나 레일리몫과 같은 방법이 사용될 수 있다.
+
+\par \vspace{20pt}
+\textbf{중심어} : 립시츠 상수, 작용소 놈, Rademacher 정리, AutoLip, 누승법, 레일리 몫
+
+%%% dedication : 생략
+
+%%% preface : 생략
+
+%\newpage
+%\chapter*{Preface}
+%\addcontentsline{toc}{chapter}{Preface}
+%\normalsize
+%The text of the preface begins here. 
+%
+%If the thesis/dissertation contains the results of work conducted in collaboration with other people, or if the thesis/dissertation contains previously published content, a preface must be included. The preface may include the following. However, it is also possible to include the contents of the preface in the introduction of the main body.\par
+%
+%\begin{enumerate}
+%\item a description of the results that were obtained in collaboration with others, indicating the nature and proportion of the contribution of others and in general terms the portions of the work which the student claims as original 
+%\item acknowledgments of funding sources and other contributors
+%\item a description of contents that have been \underline{published or submitted for publication} and the contributions of all authors involved in any multi-authored publications included in the thesis/dissertation 
+%\item your brief personal background, academic motivation, thesis/dissertation target group, acknowledgments, etc. can be included 
+%\end{enumerate}
+%
+%\newpage
+%Examples you may refer to 
+%\begin{itemize}
+%\item\url{https://www.grad.ubc.ca/sites/default/files/doc/page/thesis_sample_prefaces.pdf}
+%\item\url{https://www.phase-trans.msm.cam.ac.uk/2002/thomas/chapter1.pdf}
+%\end{itemize}
+
+%%% acknowledgment : 생략
+
+%%% table of contents
+\renewcommand*\contentsname{Table of Contents}
+\addcontentsline{toc}{chapter}{Table of Contents}
+\tableofcontents
+
+\bigskip
+
+%The table of contents starts with the abstract. 
+%The preliminary pages (abstract, dedication, preface, acknowledgments, table of contents, list of tables, list of figures, nomenclature) should be assigned using small Roman numerals (i, ii, iii, iv, v...). The other preliminary pages (cover page, title page, and signature page) should not be numbered. For the main body, use Arabic numbers (1, 2, 3, 4, 5...) starting with page 1.
+%It is customary to use Arabic numbers (1, 2, 3, 4, 5...) for the chapters in the main body and capital letters (A, B, C...) for the sections in the appendices.
+
+%%% list of tables
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+\bigskip
+%A list of tables shall be included when there are tables in the thesis/dissertation. Table numbering can be continuous throughout the thesis/dissertation or by chapter (e.g., 1.1, 1.2, 2.1, 2.2...).
+
+%%% list of figures
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\bigskip
+%List of figures should be prepared when figures are included in the thesis/dissertation. Figure numbering can be continuous throughout the thesis/dissertation or by chapter (e.g., 1.1, 1.2, 2.1, 2.2...).
+
+%%% nomenclature (or list of symbols) 
+\chapter*{Nomenclature}
+\addcontentsline{toc}{chapter}{Nomenclature}
+\begin{tabular}{p{.2\textwidth}p{.7\textwidth}}
+$M$	& original mass matrix\\
+$K$	& original stiffness matrix\\[30pt]
+\multicolumn{2}{l}{Subscripts}\\
+$b$ & interface boundary\\
+$d$ & dominant\\[30pt]
+\multicolumn{2}{l}{Abbreviation}\\
+$CMS$ & Component Mode Synthesis\\
+\end{tabular}
+%
+%\bigskip
+%If nomenclature or a list of symbols is used, a section describing subscripts and abbreviations can be included.
+
+%%% first chapter of the main body
+
+\chapter{Introduction}\label{chap:intro}
+\pagenumbering{arabic} % set the page number as Arabic type from this page on.
 
 Deep neural networks have made many advances including computer vision, language modeling, machine translation and text and picture generating.
 Still, one of the difficulties in applying deep learning algorithms to reality is that the algorithm often lacks its robustness.
@@ -97,6 +266,7 @@ In chapter 2, we define the optimal Lipschitz constant of the functions between 
 However, if the function becomes more complex, it is difficult or almost impossible to calculate the optimal constant.
 So, we propose algorithms to estimate the constant, using the Rademacher's theorem.
 
+%%%  the second chapter of the main body
 %%%
 \chapter{Lipschitz Constants of Functions Between Euclidean Spaces}
 
@@ -613,7 +783,7 @@ Note also that although the equation \eqref{eq:Rademacher} expresses \(\lip(f)\)
 Here is an algorithm called \emph{AutoLip} that evaluate an upperbound for the Lipschitz constant.
 The algorithm can be applied to any deterministic neural network (resp. stochastic neural networks or bayesian neural networks) with the computation graph, which is a composite of elementary functions.
 
-The only difficulty in the Rademacher theorem was the expression supremum ; it is not easy or sometimes impossible to evaluate the exact value of the supremum or the maximum of a function.
+The only difficulty in the Rademacher theorem was the expression supremum ; it is not easy or sometimes infeasible to evaluate the exact value of the supremum or the maximum of a function.
 But, it is possible, in most case, to find the maximum in the relatively simple function.
 In other words, the supremum for the Jacobian matrix can be calcuated for most elementary functions.
 
@@ -747,8 +917,10 @@ After \(K\) iterations, we have an upper bound \(L_K\) of the lipschitz constant
 (\textbf{Algorithm} \ref{alg:1})
 
 \begin{algorithm}
-\KwData{the function \(f=g_K\circ\cdots\circ g_0\),\\ where \(\theta_k=(g_k\circ\cdots\circ g_0)(\boldsymbol x)\) for \(0\le k\le K\)}
-\KwResult{An upper bound \(L\) for \(\lip(f)\)}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{the function \(f=g_K\circ\cdots\circ g_0\), where \(\theta_k=(g_k\circ\cdots\circ g_0)(\boldsymbol x)\) for \(0\le k\le K\).}
+\Output{An upper bound \(L\) for \(\lip(f)\)}
+\BlankLine
 \(k\gets 0\)\;
 \(L_0\gets1\)\;
 \While{\(k<K\)}{
@@ -759,7 +931,6 @@ After \(K\) iterations, we have an upper bound \(L_K\) of the lipschitz constant
 \caption{AutoLip}
 \label{alg:1}
 \end{algorithm}
-
 
 %%
 \section{Multi-Layer Perceptrons}
@@ -779,7 +950,7 @@ With the computation graph illustrated in Figure \ref{computation_graph_2}, we h
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{computation_graph_2}
-\caption{A computation graph for the function the single layer perceptron}
+\caption{A computation graph for a single layer perceptron}
 \label{computation_graph_2}
 \end{figure}
 
@@ -862,7 +1033,7 @@ Instead of applying the Theorem \ref{theo:evaluation_for_rectangular_matrices} a
 
 %%%
 \subsection{Power method}\label{sec:power_method}
-Supposet that \(A\in\mathbb R^{n\times n}\) is a diagonalizable matrix, or that \(A\) has distinct eigenvalues \(\lambda_1\), \(\lambda_2\), \(\cdots\), \(\lambda_n\).
+Supposet that \(A\in\mathbb R^{n\times n}\) is an orthogonally diagonalizable matrix, or that \(A\) has distinct eigenvalues \(\lambda_1\), \(\lambda_2\), \(\cdots\), \(\lambda_n\).
 This is usually the case, since the probability that the characteristic equation happen to have repeated root is 0.
 
 Then, we have not only the distinct eigenvalues \(\lambda_1\), \(\cdots\), \(\lambda_n\), but also the linearly independent eigenvectors \(v_1\), \(\cdots\), \(v_n\).
@@ -909,9 +1080,12 @@ For rectangular matrix \(f\), for example, as in Subsection \ref{convolutional_l
 %Therefore, the dominating eigenvalue \(\tilde\lambda\) of a square matrix \(A\) or the operator norm of \(A\) can be approximated by
 %\[\tilde\lambda\approx\frac{\langle A^{k+1}x,A^kx\rangle}{\langle A^kx,A^kx\rangle}.\]
 
+
 \begin{algorithm}
-\KwData{A rectangular matrix \(F\in\mathbb R^{n\times m}\)}
-\KwResult{Approximation for \(||F||\)}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{A rectangular matrix \(F\in\mathbb R^{n\times m}\).}
+\Output{Approximation for \(||F||\)}
+\BlankLine
 \(A\gets F^TF\)\;
 Set an integer \(k\) sufficiently large enough\;
 Set a nonzero vector \(x\in\mathbb R^m\)\;
@@ -968,17 +1142,20 @@ Therefore,
 %%%
 \chapter{Conclusion}
 For a function between metric spaces, the Lipschitz constant measures the rate of change of the function.
-If we conceive a neural network as a function between Euclidean space, the Lipschitz constant of the neural network tells us how sensitive the output is, relative to the input.
-One can relate the Lipschitz constant to robustness.
-But the Lipschitz constant is not the same as the robustness, in that it measures the sensitivity when the parameters are fixed.
+If we conceive a neural network as a function between Euclidean spaces, the Lipschitz constant of the neural network tells us how sensitive the output is, relative to the input.
+One can relate the Lipschitz constant to the robustness of the algorithm.
+But the Lipschitz constant is not the same as the robustness of an \emph{architecture}, in that it measures the sensitivity of an \emph{algorithm} when the parameters are fixed.
+We may further study the robustness by investigating the changes of the Lipschitz constant when updating the parameters of the algorithm.
 
 The Lipscthiz constant for relatively simple functions such as activation functions, linear functions and affine functions can be obtained either by simple calculation or the notion of matrix norm.
-But the actual computation for the neural networks are not that easy.
-Although, we can express the lipschitz constant of \emph{any} locally Lipschitz functions by Rademacher Theorem, it is impossible (NP-hard) to evaluate the optimal constant even for a simple architecture such as 2-layer perceptron.
-Rather, we can think of several numerical way to find an upper bound for the optimal constant either by an algorithm called AutoLip or by the power method.
+We can express the Lipschitz constant of \emph{any} locally Lipschitz functions by Rademacher Theorem, but evaluating the optimal constant in its exact value is difficult or not feasible.
+Rather, we can think of several numerical way to find an upper bound for the optimal constant either by an algorithm called AutoLip or by the Rayleigh quotient and power method.
+This paper doesn't include the implementation with programming code, such as Python.
+One may relate the calculations to the experimental results.
 
+%%% Reference(or Bibliography)
 \newpage
-
+\renewcommand\bibname{Reference}
 \addcontentsline{toc}{chapter}{Bibliography}
 \begin{thebibliography}{AA}
 \bibitem {VA-SK} Virmaux, A., \& Scaman, K. (2018). Lipschitz regularity of deep neural networks: analysis and efficient estimation.
@@ -1002,14 +1179,6 @@ THEOREM
 
 \end{thebibliography}
 
-%\addcontentsline{toc}{chapter}{Bibliography}
-%
-%\bibliographystyle{abbrv}
-%\bibliography{reference.bib}
-%
-%
-
-
+%%% the appendix chapters : 생략
 
 \end{document}
-
