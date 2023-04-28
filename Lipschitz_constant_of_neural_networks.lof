@@ -1,8 +1,0 @@
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces A computation graph for the function \(f_\omega (x)=\frac 1{1+e^{-2x}}+\left |2x+\omega \cos x\right |.\)}}{21}{}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces A single layer perceptron of input dimension 3 and output dimension 4 with weight matrix \(W\) and the bias \(b\).}}{25}{}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces A computation graph for a single layer perceptron}}{25}{}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces A convolutional layer as a matrix multiplication}}{28}{}%
-\addvspace {10\p@ }
