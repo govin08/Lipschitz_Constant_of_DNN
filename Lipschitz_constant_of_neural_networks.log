@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.4)  15 JAN 2024 11:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.4)  19 JUN 2024 22:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -762,15 +762,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <SLP.png, id=159, 429.7656pt x 405.1938pt>
 File: SLP.png Graphic file (type png)
 <use SLP.png>
-Package pdftex.def Info: SLP.png  used on input line 945.
+Package pdftex.def Info: SLP.png  used on input line 942.
 (pdftex.def)             Requested size: 154.78062pt x 145.93147pt.
 <computation_graph_2.png, id=160, 338.7054pt x 73.2336pt>
 File: computation_graph_2.png Graphic file (type png)
 <use computation_graph_2.png>
-Package pdftex.def Info: computation_graph_2.png  used on input line 952.
+Package pdftex.def Info: computation_graph_2.png  used on input line 949.
 (pdftex.def)             Requested size: 386.95749pt x 83.6704pt.
 
-Overfull \hbox (77.00777pt too wide) detected at line 981
+Overfull \hbox (77.00777pt too wide) detected at line 978
 []
  []
 
@@ -778,14 +778,14 @@ Overfull \hbox (77.00777pt too wide) detected at line 981
 <convolution_matrix.png, id=169, 707.7642pt x 516.4896pt>
 File: convolution_matrix.png Graphic file (type png)
 <use convolution_matrix.png>
-Package pdftex.def Info: convolution_matrix.png  used on input line 1026.
+Package pdftex.def Info: convolution_matrix.png  used on input line 1023.
 (pdftex.def)             Requested size: 386.95749pt x 282.38362pt.
  [27] [28 <./convolution_matrix.png>] [29] [30] [31] [32] [33]
 Chapter 4.
 [34
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1168--1169
+Underfull \hbox (badness 10000) in paragraph at lines 1165--1166
 []\OT1/ptm/m/n/10.95 Rudin, Wal-ter. \OT1/ptm/m/it/10.95 Real and Com-plex Anal
 -y-sis. \OT1/ptm/m/n/10.95 : McGraw-Hill Sci-
  []
@@ -796,7 +796,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1168--1169
 Here is how much of TeX's memory you used:
  6915 strings out of 475071
  112167 string characters out of 5782908
- 480035 words of memory out of 5000000
+ 483035 words of memory out of 5000000
  28091 multiletter control sequences out of 15000+600000
  537832 words of font info for 186 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -849,7 +849,7 @@ urw/symbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pf
 b><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/202
 2/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on Lipschitz_constant_of_neural_networks.pdf (46 pages, 1963805 
+Output written on Lipschitz_constant_of_neural_networks.pdf (46 pages, 1963937 
 bytes).
 PDF statistics:
  420 PDF objects out of 1000 (max. 8388607)

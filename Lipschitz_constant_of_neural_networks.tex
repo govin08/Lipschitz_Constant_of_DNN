@@ -831,23 +831,20 @@ Again, since \(\theta_3=g_3(\theta_0,\theta_1,\theta_2)=2\theta_0\), we have
 &=\pa{\theta_3}{\theta_0}\pa{\theta_0}x+\pa{\theta_3}{\theta_1}\pa{\theta_1}x+\pa{\theta_3}{\theta_2}\pa{\theta_2}x\\
 &=2\times1+0\times0+0\times(-\sin x)=2,
 \end{align*}
-and thus \(\norm{\pa{\theta_2}x}=2\).
+and thus \(\norm{\pa{\theta_3}x}=2\).
 Note that the value of partial derivatives evaluated above, such as \pa{\theta_1}x and \pa{\theta_2}x, can be applied to calcuate \pa{\theta_3}x.
-To represent that \norm{\pa{\theta_3}x} is upper bounded by 2, we write \(L_3=2\).
-Likewise, let \(L_1=0\) and \(L_0=1\).
+To represent that \norm{\pa{\theta_3}x} is bounded above by 2, we write \(L_3=2\).
+Likewise, \(L_0=1\), \(L_1=0\) and \(L_2=1\).
 
 For the next parameter \(\theta_4=g_4(\theta_0,\theta_1,\theta_2,\theta_3)=\theta_3+\theta_1\theta_2\), we have
 \begin{align*}
-\pa{\theta_4}x
-&=\pa{\theta_4}{\theta_0}\pa{\theta_0}x+\pa{\theta_4}{\theta_1}\pa{\theta_1}x+\pa{\theta_4}{\theta_2}\pa{\theta_2}x
-+\pa{\theta_4}{\theta_3}\pa{\theta_3}x\\
-&=0\times1+\theta_2\times0+\theta_1\times(-\sin x)+1\times2\\
-\end{align*}
-and
-\begin{align*}
 \norm{\pa{\theta_4}x}
-&\le|\omega|\cdot\norm{\pa{\theta_2}x}+1\times\norm{\pa{\theta_3}x}\\
-&\le|\omega|\cdot L_2+L_3=|\omega|+2.
+&=\norm{\pa{\theta_4}{\theta_0}\pa{\theta_0}x+\pa{\theta_4}{\theta_1}\pa{\theta_1}x+\pa{\theta_4}{\theta_2}\pa{\theta_2}x
++\pa{\theta_4}{\theta_3}\pa{\theta_3}x}\\
+&\le\norm{\pa{\theta_4}{\theta_0}}\norm{\pa{\theta_0}x}+\norm{\pa{\theta_4}{\theta_1}}\norm{\pa{\theta_1}x}+\norm{\pa{\theta_4}{\theta_2}}\norm{\pa{\theta_2}x}
++\norm{\pa{\theta_4}{\theta_3}}\norm{\pa{\theta_3}x}\\
+&\le0\times1+\sup_x\left|\theta_2\right|\times0+\sup_x\left|\omega\right|\times1+1\times2\\
+&=|\omega|+2
 \end{align*}
 Thus, \(L_4=|\omega|+2\).
 %(Here, tighter bound \(|\omega|\) than \(|\omega|+2\) is possible in this case, but we are proposing a genenral upper bound in this section.)
@@ -863,7 +860,7 @@ In similar fashions,
 \pa{\theta_7}x&=\pa{\theta_7}{\theta_5}\pa{\theta_5}x+\pa{\theta_7}{\theta_6}\pa{\theta_6}x&&\norm{\pa{\theta_7}x}
 \le\norm{\pa{\theta_5}x}+\norm{\pa{\theta_6}x}\le|\omega|+\frac52.
 \end{align*}
-Thus, the Lipschitz constant for the function \(f_\omega\) is upper bounded by \(\omega+\frac52\).
+Thus, the Lipschitz constant for the function \(f_\omega\) is bounded above by \(|\omega|+\frac52\).
 
 %%%
 \subsection{AutoLip}
